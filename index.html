@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mahdi Ashrafee - Developer Portfolio</title>
-
+    
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
-
+    
     <!-- Google Fonts (JetBrains Mono) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
 
@@ -111,87 +111,46 @@
             
             <!-- Header Icons Group -->
             <div class="header-icons-group">
+                <!-- Mobile Blog Button (visible only on mobile) -->
+                <button class="mobile-blog-button" data-modal-target="#modalProjects5" title="Blog">
+                    <i class="fas fa-book"></i>
+                </button>
+                
                 <!-- Theme Toggle -->
                 <button id="theme-toggle" title="Toggle Dark/Light Mode" class="header-theme-toggle">
                     <i class="fas fa-sun"></i>
-                </button>
+            </button>
                 
                 <!-- Main Navigation -->
                 <ul class="nav-menu">
-                    <li><a href="#" data-modal-target="#modalProjects1"><i class="fas fa-desktop"></i> Projects</a></li>
-                    <li><a href="#" data-modal-target="#modalProjects6"><i class="fas fa-code-branch"></i> Contributions</a></li>
+                   
                     <li><a href="#" data-modal-target="#modalProjects5"><i class="fas fa-book"></i> Blog</a></li>
-                    <li><a href="#" data-modal-target="#modalAbout"><i class="fas fa-user"></i> About Me</a></li>
+                    
                 </ul>
                 
-                <!-- Mobile Social Icons - Always visible -->
-                <div class="mobile-social-icons">
-                    <a href="https://linkedin.com//in/mahdi-ash" target="_blank" title="LinkedIn" class="social-icon-link">
-                        <i class="fab fa-linkedin fa-lg"></i>
-                    </a>
-                    <a href="https://github.com/mahdi-oss" target="_blank" title="GitHub" class="social-icon-link">
-                        <i class="fab fa-github fa-lg"></i>
-                    </a>
-                </div>
+                
                 
                 <!-- Hamburger Menu Icon for Mobile -->
-                <button class="hamburger-menu" id="hamburger-toggle" aria-label="Menu">
-                    <div class="hamburger-icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </button>
-            </div>
-        </nav>
+            
+        </div>
+    </nav>
     </header>
 
     <!-- Mobile Menu Overlay -->
     <div class="mobile-overlay" id="mobile-overlay"></div>
     
     <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobile-menu">
-        <button class="mobile-close" id="mobile-close">
-            <i class="fas fa-times"></i>
-        </button>
-        <div class="mobile-menu-buttons">
-            <!-- Mobile menu buttons -->
-            <button class="mobile-menu-button" data-modal-target="#modalProjects1">
-                <i class="fas fa-desktop"></i>
-                <span>Projects</span>
-            </button>
-            <button class="mobile-menu-button" data-modal-target="#modalProjects6">
-                <i class="fas fa-code-branch"></i>
-                <span>Contributions</span>
-            </button>
-            <button class="mobile-menu-button" data-modal-target="#modalProjects5">
-                <i class="fas fa-book"></i>
-                <span>Blog</span>
-            </button>
-            <button class="mobile-menu-button" data-modal-target="#modalSkills">
-                <i class="fas fa-laptop-code"></i>
-                <span>Skills</span>
-            </button>
-            <button class="mobile-menu-button" data-modal-target="#modalAbout">
-                <i class="fas fa-user"></i>
-                <span>About Me</span>
-            </button>
-            <button class="mobile-menu-button" data-modal-target="#modalContact">
-                <i class="fas fa-envelope"></i>
-                <span>Contact</span>
-            </button>
-        </div>
-    </div>
+    
     
     <!-- Left Sidebar Toggle Button -->
     <div class="sidebar-toggle" id="sidebarToggle">
         <i class="fas fa-terminal"></i>
-    </div>
+                        </div>
     
     <!-- Scroll Indicator -->
     <div class="scroll-indicator" id="scrollIndicator">
         <i class="fas fa-chevron-down"></i>
-    </div>
+                    </div>
 
     <main>
         <!-- Intro Section -->
@@ -214,7 +173,7 @@
                         <div class="intro-text">
                             <p>I'm a <span class="highlight-text">full-stack developer</span> with over 2 years of experience building backend systems, APIs, and cloud infrastructure. I work with <span class="keyword-text">Python</span>, <span class="keyword-text">C/C++</span>, <span class="keyword-text">Java</span>, and <span class="keyword-text">JavaScript</span>, and have experience with databases like <span class="function-text">PostgreSQL</span>, <span class="keyword-text">MySQL</span>, and <span class="function-text">MongoDB</span>.</p>
                             <p>I'm the developer of <span class="highlight-important">ScamShield API</span>, <span class="highlight-important">Algorithm Visualizer</span>, and several open-source tools. I hold an <span class="function-text">AWS Certified Cloud Practitioner</span> certification and am currently pursuing a B.S. in Computer Science.</p>
-                        </div>
+                </div>
                         
                         <!-- Professional CTA Buttons -->
                         <div class="professional-cta">
@@ -222,21 +181,18 @@
                                 <i class="fas fa-file-pdf"></i>
                                 <span>Resume</span>
                             </a>
-                            <a href="https://github.com/mahdiashrafee-oss" target="_blank" class="pro-button">
+                            <a href="https://github.com/mahdi-oss" target="_blank" class="pro-button">
                                 <i class="fab fa-github"></i>
                                 <span>GitHub</span>
                             </a>
-                            <a href="https://linkedin.com/in/mahdi959" target="_blank" class="pro-button">
+                            <a href="https://linkedin.com/in/mahdi-ash" target="_blank" class="pro-button">
                                 <i class="fab fa-linkedin"></i>
                                 <span>LinkedIn</span>
                             </a>
-                            <button class="pro-button" onclick="document.getElementById('modalContact').classList.add('active'); document.body.style.overflow = 'hidden';">
-                                <i class="fas fa-envelope"></i>
-                                <span>Contact</span>
-                            </button>
-                        </div>
+                            
                     </div>
-                </div>
+                        </div>
+                        </div>
 
                 <!-- Key Achievements Section -->
         <section id="achievements" class="section achievements-section">
@@ -246,8 +202,8 @@
                 <!-- Achievement 1 -->
                 <div class="achievement-card">
                     <div class="achievement-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
                     <div class="achievement-content">
                         <h3>ScamShield API</h3>
                         <p>Designed and developed an intelligent audio analysis API that detects scam tactics from phone call recordings using NLP techniques.</p>
@@ -256,14 +212,14 @@
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">Machine Learning</span>
                         </div>
+                        </div>
                     </div>
-                </div>
-                
+
                 <!-- Achievement 2 -->
                 <div class="achievement-card">
                     <div class="achievement-icon">
-                        <i class="fas fa-stream"></i>
-                    </div>
+                                <i class="fas fa-stream"></i>
+                            </div>
                     <div class="achievement-content">
                         <h3>Algorithm Visualizer</h3>
                         <p>Created an interactive platform to visualize classic algorithms with minimal code and clean UI. Built for learners, educators, and engineers.</p>
@@ -272,14 +228,14 @@
                             <span class="tech-tag">Streamlit</span>
                             <span class="tech-tag">Algorithms</span>
                         </div>
+                        </div>
                     </div>
-                </div>
-                
+
                 <!-- Achievement 3 -->
                 <div class="achievement-card">
                     <div class="achievement-icon">
                         <i class="fas fa-code-branch"></i>
-                    </div>
+                            </div>
                     <div class="achievement-content">
                         <h3>Open Source Contributions</h3>
                         <p>Active contributor to open-source projects including AWS CDK improvements and documentation for developer tools.</p>
@@ -362,7 +318,7 @@
                                 
                                
                               
-                            </div>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -426,27 +382,27 @@
         <div class="tech-category">
             <h3>Programming</h3>
             <div class="skill-list">
-                <div class="skill-item">
+                            <div class="skill-item">
                     <div class="skill-name">Python</div>
-                    <div class="skill-level">
+                                <div class="skill-level">
                         <div class="skill-meter advanced"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
+                                </div>
+                            </div>
+                            <div class="skill-item">
                     <div class="skill-name">Java</div>
-                    <div class="skill-level">
+                                <div class="skill-level">
                         <div class="skill-meter advanced"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
+                                </div>
+                            </div>
+                            <div class="skill-item">
                     <div class="skill-name">C/C++</div>
-                    <div class="skill-level">
+                                <div class="skill-level">
                         <div class="skill-meter advanced"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
+                                </div>
+                            </div>
+                            <div class="skill-item">
                     <div class="skill-name">JavaScript</div>
-                    <div class="skill-level">
+                                <div class="skill-level">
                         <div class="skill-meter intermediate"></div>
                     </div>
                 </div>
@@ -466,35 +422,35 @@
                     <div class="skill-name">OCaml</div>
                     <div class="skill-level">
                         <div class="skill-meter beginner"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        
+
         <div class="tech-category">
             <h3>AWS Cloud</h3>
             <div class="skill-list">
-                <div class="skill-item">
+                            <div class="skill-item">
                     <div class="skill-name">EC2 / S3</div>
-                    <div class="skill-level">
+                                <div class="skill-level">
                         <div class="skill-meter advanced"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
+                                </div>
+                            </div>
+                            <div class="skill-item">
                     <div class="skill-name">Route 53</div>
-                    <div class="skill-level">
+                                <div class="skill-level">
                         <div class="skill-meter advanced"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
+                                </div>
+                            </div>
+                            <div class="skill-item">
                     <div class="skill-name">Beanstalk</div>
-                    <div class="skill-level">
+                                <div class="skill-level">
                         <div class="skill-meter intermediate"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
+                                </div>
+                            </div>
+                            <div class="skill-item">
                     <div class="skill-name">IAM</div>
-                    <div class="skill-level">
+                                <div class="skill-level">
                         <div class="skill-meter advanced"></div>
                     </div>
                 </div>
@@ -502,46 +458,46 @@
                     <div class="skill-name">CloudWatch</div>
                     <div class="skill-level">
                         <div class="skill-meter intermediate"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        
+
         <div class="tech-category">
             <h3>Frameworks</h3>
             <div class="skill-list">
-                <div class="skill-item">
+                            <div class="skill-item">
                     <div class="skill-name">FastAPI</div>
-                    <div class="skill-level">
+                                <div class="skill-level">
                         <div class="skill-meter advanced"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
+                                </div>
+                            </div>
+                            <div class="skill-item">
                     <div class="skill-name">Flask</div>
-                    <div class="skill-level">
+                                <div class="skill-level">
                         <div class="skill-meter advanced"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
+                                </div>
+                            </div>
+                            <div class="skill-item">
                     <div class="skill-name">Django</div>
-                    <div class="skill-level">
+                                <div class="skill-level">
                         <div class="skill-meter intermediate"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
+                                </div>
+                            </div>
+                            <div class="skill-item">
                     <div class="skill-name">SvelteKit</div>
-                    <div class="skill-level">
+                                <div class="skill-level">
                         <div class="skill-meter intermediate"></div>
-                    </div>
-                </div>
+                                </div>
+                            </div>
                 <div class="skill-item">
                     <div class="skill-name">Tailwind</div>
                     <div class="skill-level">
                         <div class="skill-meter intermediate"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         
         <div class="tech-category">
             <h3>Databases</h3>
@@ -964,32 +920,148 @@
         </div>
         </div>
 
-    <div id="modalProjects5" class="modal">
-        <div class="modal-content">
+    <div id="modalProjects5" class="modal blog-modal">
+        <div class="modal-content blog-modal-content">
             <span class="close-button">×</span>
-            <h2>Blog</h2>
+            <div class="blog-modal-header">
+                <div class="blog-header-text">
+                    <h1>Blog & Journal</h1>
+                    
+                </div>
+            </div>
             <div class="modal-scroll-content">
-                <div class="project-grid">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <i class="fas fa-code-branch project-icon gradient-blue"></i>
-                            <h3>How It All Started</h3>
+                <div class="blog-posts-grid">
+                    <article class="blog-post-card">
+                        <div class="blog-post-image" style="background: linear-gradient(135deg, #7aa2f7, #7dcfff);">
+                            <div class="blog-post-overlay">
+                                <i class="fas fa-rocket"></i>
+                            </div>
                         </div>
-                        <div class="project-tags">
-                            <span class="project-tag">Personal</span>
-                            <span class="project-tag">Development</span>
-                            <span class="project-tag">Journey</span>
-                        </div>
-                        <p class="project-description">
-                            My journey into software development began in a small village where I saved lunch money to buy mobile data so I could build my first Android app to help students who couldn't afford guidebooks.
-                        </p>
-                        <div class="project-features">
-                            <a href="blog-how-it-started.html" class="cta-button primary">
-                                <i class="fas fa-book-open"></i>
-                                <span>Read Full Story</span>
+                        <div class="blog-post-content">
+                            <div class="blog-post-meta">
+                                <span class="blog-date">
+                                    <i class="far fa-calendar"></i>
+                                    <time>December 2024</time>
+                                </span>
+                                <span class="blog-read-time">
+                                    <i class="far fa-clock"></i>
+                                    5 min read
+                                </span>
+                            </div>
+                            <h3 class="blog-post-title">How It All Started</h3>
+                            <p class="blog-post-excerpt">
+                                My journey into software development began in a small village where I saved lunch money to buy mobile data so I could build my first Android app to help students who couldn't afford guidebooks.
+                            </p>
+                            <div class="blog-post-tags">
+                                <span class="blog-tag">Personal</span>
+                                <span class="blog-tag">Journey</span>
+                                <span class="blog-tag">Development</span>
+                            </div>
+                            <a href="blog-how-it-started.html" class="blog-read-more">
+                                <span>Read Article</span>
+                                <i class="fas fa-arrow-right"></i>
                             </a>
                         </div>
+                    </article>
+
+                    <article class="blog-post-card">
+                        <div class="blog-post-image" style="background: linear-gradient(135deg, #bb9af7, #c0caf5);">
+                            <div class="blog-post-overlay">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                        </div>
+                        <div class="blog-post-content">
+                            <div class="blog-post-meta">
+                                <span class="blog-date">
+                                    <i class="far fa-calendar"></i>
+                                    <time>Coming Soon</time>
+                                </span>
+                                <span class="blog-read-time">
+                                    <i class="far fa-clock"></i>
+                                    6 min read
+                                </span>
+                            </div>
+                            <h3 class="blog-post-title">Building Scalable Systems</h3>
+                            <p class="blog-post-excerpt">
+                                Lessons learned from architecting distributed systems that handle millions of requests. Key principles, trade-offs, and practical insights from real-world experience.
+                            </p>
+                            <div class="blog-post-tags">
+                                <span class="blog-tag">Architecture</span>
+                                <span class="blog-tag">Backend</span>
+                                <span class="blog-tag">Scalability</span>
+                            </div>
+                            <a href="#" class="blog-read-more blog-read-more-disabled">
+                                <span>Coming Soon</span>
+                                <i class="fas fa-hourglass-half"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="blog-post-card">
+                        <div class="blog-post-image" style="background: linear-gradient(135deg, #f7768e, #ff9e64);">
+                            <div class="blog-post-overlay">
+                                <i class="fas fa-code"></i>
+                            </div>
+                        </div>
+                        <div class="blog-post-content">
+                            <div class="blog-post-meta">
+                                <span class="blog-date">
+                                    <i class="far fa-calendar"></i>
+                                    <time>Coming Soon</time>
+                                </span>
+                                <span class="blog-read-time">
+                                    <i class="far fa-clock"></i>
+                                    8 min read
+                                </span>
+                            </div>
+                            <h3 class="blog-post-title">From Java to Go: A Technical Journey</h3>
+                            <p class="blog-post-excerpt">
+                                Why I chose Go for backend development, the challenges of transitioning from Java, and how it changed my approach to building high-performance applications.
+                            </p>
+                            <div class="blog-post-tags">
+                                <span class="blog-tag">Go</span>
+                                <span class="blog-tag">Java</span>
+                                <span class="blog-tag">Backend</span>
+                            </div>
+                            <a href="#" class="blog-read-more blog-read-more-disabled">
+                                <span>Coming Soon</span>
+                                <i class="fas fa-hourglass-half"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="blog-post-card">
+                        <div class="blog-post-image" style="background: linear-gradient(135deg, #9ece6a, #73daca);">
+                            <div class="blog-post-overlay">
+                                <i class="fas fa-database"></i>
                     </div>
+                </div>
+                        <div class="blog-post-content">
+                            <div class="blog-post-meta">
+                                <span class="blog-date">
+                                    <i class="far fa-calendar"></i>
+                                    <time>Coming Soon</time>
+                                </span>
+                                <span class="blog-read-time">
+                                    <i class="far fa-clock"></i>
+                                    7 min read
+                                </span>
+            </div>
+                            <h3 class="blog-post-title">Optimizing Database Performance</h3>
+                            <p class="blog-post-excerpt">
+                                Deep dive into PostgreSQL optimization techniques, indexing strategies, and query optimization that reduced response times by 90% in production systems.
+                            </p>
+                            <div class="blog-post-tags">
+                                <span class="blog-tag">Database</span>
+                                <span class="blog-tag">PostgreSQL</span>
+                                <span class="blog-tag">Performance</span>
+                            </div>
+                            <a href="#" class="blog-read-more blog-read-more-disabled">
+                                <span>Coming Soon</span>
+                                <i class="fas fa-hourglass-half"></i>
+                            </a>
+                        </div>
+                    </article>
                 </div>
           </div>
         </div>
@@ -1005,7 +1077,7 @@
                         <div class="project-header">
                             <i class="fab fa-aws project-icon gradient-orange"></i>
                             <h3>AWS CDK</h3>
-                        </div>
+        </div>
                         <div class="project-tags">
                             <span class="project-tag">TypeScript</span>
                             <span class="project-tag">AWS</span>

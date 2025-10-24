@@ -69,17 +69,25 @@
         }
         
         .blog-content {
-            line-height: 1.9;
-            font-size: 1.08rem;
+            line-height: 1.7;
+            font-size: 1.15rem;
             max-width: 100%;
-            letter-spacing: 0.01rem;
+            letter-spacing: 0.005rem;
             transition: font-size 0.3s ease;
+            color: #000000;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Helvetica', 'Arial', sans-serif;
+            font-weight: 500;
+        }
+        
+        .blog-content p {
+            color: #000000;
+            font-weight: 500;
         }
         
         .blog-content p:first-of-type {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 500;
-            color: var(--accent-color);
+            color: #000000;
             transition: font-size 0.3s ease;
         }
         
@@ -100,25 +108,47 @@
             border: 1px solid var(--border-color);
         }
         
-        /* Blog sidebar styles */
+        /* Blog sidebar styles - matching home page */
         .blog-sidebar {
-            position: sticky;
-            top: 80px;
+            position: fixed;
+            top: 100px;
+            left: -320px;
             width: 280px;
-            background-color: var(--secondary-color);
-            border-radius: 0 10px 10px 0;
-            border: 1px solid var(--border-color);
+            background: rgba(33, 36, 43, 0.6);
+            backdrop-filter: blur(50px) saturate(200%);
+            -webkit-backdrop-filter: blur(50px) saturate(200%);
+            border-radius: 0 24px 24px 0;
+            border: 1px solid rgba(41, 46, 66, 0.3);
             border-left: none;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.1),
+                0 8px 32px rgba(0, 0, 0, 0.06),
+                0 1px 0 rgba(41, 46, 66, 0.8) inset;
             padding: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-            height: calc(100vh - 100px);
+            z-index: 1000;
+            max-height: calc(100vh - 120px);
             overflow-y: auto;
-            transition: all 0.3s ease;
+            transition: left 0.3s ease;
             scrollbar-width: thin;
             scrollbar-color: var(--scrollbar-thumb-color) transparent;
             flex-shrink: 0;
-            margin-top: 0;
+        }
+        
+        .blog-sidebar.active {
+            left: 24px;
+        }
+        
+        /* Light theme blog sidebar */
+        .light-theme .blog-sidebar {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(50px) saturate(200%);
+            -webkit-backdrop-filter: blur(50px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-left: none;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.1),
+                0 8px 32px rgba(0, 0, 0, 0.06),
+                0 1px 0 rgba(255, 255, 255, 0.8) inset;
         }
         
         .blog-sidebar::-webkit-scrollbar {
@@ -178,15 +208,17 @@
             align-items: center;
             gap: 12px;
             margin-top: 10px;
-            background-color: rgba(var(--accent-rgb), 0.05);
+            background-color: var(--primary-color);
             border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             padding: 10px 12px;
         }
         
         .font-size-display {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.9rem;
-            color: var(--text-color);
+            color: var(--heading-color);
             flex-grow: 1;
         }
         
@@ -223,15 +255,18 @@
             align-items: center;
             gap: 10px;
             padding: 10px 12px;
-            background-color: rgba(var(--accent-rgb), 0.05);
+            background-color: var(--primary-color);
             border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             transition: all 0.2s ease;
             cursor: pointer;
         }
         
         .blog-option:hover {
-            background-color: rgba(var(--accent-rgb), 0.1);
+            background-color: rgba(var(--accent-rgb), 0.05);
             transform: translateX(3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
         
         .blog-option i {
@@ -246,96 +281,20 @@
             font-size: 0.85rem;
         }
         
-        /* Text Color Controls */
-        .text-color-controls {
-            margin-top: 15px;
-        }
-        
-        .color-option-title {
-            margin-bottom: 8px;
-            font-size: 0.85rem;
-            color: var(--text-color);
-        }
-        
-        .color-picker-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        
-        .color-option {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            border: 2px solid var(--border-color);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-            background-color: transparent;
-        }
-        
-        .color-option:hover {
-            transform: scale(1.1);
-            border-color: var(--accent-color);
-        }
-        
-        .color-option.active {
-            border: 2px solid var(--accent-color);
-            box-shadow: 0 0 5px rgba(var(--accent-rgb), 0.5);
-        }
-        
-        .default-color {
-            background-color: var(--text-color);
-            color: var(--primary-color);
-        }
-        
-        .color-option i {
-            color: var(--primary-color);
-            font-size: 0.8rem;
-        }
-        
-        /* Custom color picker styling */
-        .custom-color-picker {
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, #ff0000, #ff00ff, #0000ff, #00ffff, #00ff00, #ffff00, #ff0000);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .custom-color-picker:after {
-            content: "+";
-            position: absolute;
-            color: white;
-            font-weight: bold;
-            text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
-            font-size: 1.2rem;
-            pointer-events: none;
-        }
-        
-        #customColorInput {
-            position: absolute;
-            cursor: pointer;
-            width: 150%;
-            height: 150%;
-            left: -25%;
-            top: -25%;
-            opacity: 0;
-        }
-        
         /* Text Brightness Controls */
         .text-brightness-controls {
             margin-top: 15px;
+            background-color: var(--primary-color);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 12px;
         }
         
         .brightness-title {
             margin-bottom: 8px;
             font-size: 0.85rem;
-            color: var(--text-color);
+            color: var(--heading-color);
         }
         
         .brightness-slider-container {
@@ -395,12 +354,15 @@
         .back-option {
             margin-bottom: 15px;
             background-color: var(--primary-color);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             border-left: 3px solid var(--accent-color);
         }
         
         .back-option:hover {
             transform: translateX(3px);
-            background-color: rgba(var(--accent-rgb), 0.15);
+            background-color: rgba(var(--accent-rgb), 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
         
         .back-link {
@@ -431,7 +393,9 @@
             padding: 12px;
             margin-bottom: 10px;
             border-radius: 8px;
-            background-color: rgba(var(--accent-rgb), 0.05);
+            background-color: var(--primary-color);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             transition: all 0.2s ease;
             border-left: 3px solid transparent;
             opacity: 0.6;
@@ -444,13 +408,15 @@
         
         .blog-nav-item.active {
             border-left-color: var(--accent-color);
-            background-color: rgba(var(--accent-rgb), 0.1);
+            background-color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             opacity: 1;
             cursor: pointer;
         }
         
         .blog-nav-item.active:hover {
             transform: translateX(3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
         }
         
         .blog-nav-icon {
@@ -467,7 +433,7 @@
         
         .blog-nav-title {
             font-size: 0.85rem;
-            color: var(--text-color);
+            color: var(--heading-color);
             font-weight: 500;
         }
         
@@ -476,25 +442,47 @@
             color: var(--comment-color);
         }
         
-        /* Mobile sidebar toggle - updated to match main page */
+        /* Sidebar toggle - matching home page */
         .blog-sidebar-toggle {
-            display: none;
+            display: flex;
             position: fixed;
             top: 80px;
             left: 20px;
             background-color: var(--secondary-color);
             border: 1px solid var(--border-color);
             color: var(--accent-color);
-            border-radius: 4px;
-            width: 40px;
-            height: 40px;
+            border-radius: 8px;
+            width: 44px;
+            height: 44px;
             align-items: center;
             justify-content: center;
-            z-index: 100;
+            z-index: 1001;
             cursor: pointer;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             overflow: hidden;
             transition: all 0.3s ease;
+        }
+        
+        .blog-sidebar-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+        
+        /* Light theme blog sidebar toggle */
+        .light-theme .blog-sidebar-toggle {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .light-theme .blog-sidebar-toggle:hover {
+            background: rgba(100, 116, 139, 0.9);
+            color: white;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
         }
         
         .blog-sidebar-toggle::before {
@@ -519,6 +507,11 @@
         
         .blog-sidebar-toggle:hover i {
             transform: translateY(-2px);
+            color: var(--accent-color);
+        }
+        
+        .blog-sidebar-toggle:hover::before {
+            opacity: 1;
         }
 
         /* Responsive adjustments */
@@ -532,38 +525,21 @@
             main {
                 flex-direction: column;
             }
-            
-            .blog-sidebar {
-                position: fixed;
-                top: 60px;
-                left: -300px;
-                width: 280px;
-                height: 100vh;
-                border-radius: 0;
-                margin-top: 0;
-                z-index: 1000;
-                transition: left 0.3s ease;
-                background-color: var(--secondary-color); /* Ensure background is solid */
-                box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
-            }
-            
-            .blog-sidebar.active {
-                left: 0;
-            }
-            
-            .blog-sidebar-toggle {
-                display: flex;
-                z-index: 999;
-            }
         }
         
         @media (max-width: 768px) {
+            /* Add padding to prevent overlap with toggle button */
+            .blog-container {
+                padding-left: 90px;
+                padding-right: 25px;
+            }
+            
             .blog-title {
                 font-size: 1.8rem;
             }
             
             .blog-content {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
             
             .image-container {
@@ -788,14 +764,12 @@
         
         .highlight {
             color: var(--accent-color);
-            font-weight: 500;
+            font-weight: 900;
         }
         
         .highlight-text {
-            background: rgba(var(--accent-rgb), 0.1);
-            padding: 0 5px;
-            border-radius: 3px;
-            font-weight: 500;
+            color: #000000;
+            font-weight: 900;
         }
         
 
@@ -1312,24 +1286,7 @@
                     </button>
                 </div>
                 
-                <!-- Text Color Controls -->
-                <div class="text-color-controls">
-                    <div class="color-option-title">Text Color:</div>
-                    <div class="color-picker-container">
-                        <button class="color-option default-color active" data-color="var(--text-color)" title="Default">
-                            <i class="fas fa-check"></i>
-                        </button>
-                        <button class="color-option" style="background-color: #7aa2f7;" data-color="#7aa2f7" title="Blue"></button>
-                        <button class="color-option" style="background-color: #9ece6a;" data-color="#9ece6a" title="Green"></button>
-                        <button class="color-option" style="background-color: #e0af68;" data-color="#e0af68" title="Yellow"></button>
-                        <button class="color-option" style="background-color: #bb9af7;" data-color="#bb9af7" title="Purple"></button>
-                        <div class="color-option custom-color-picker" title="Custom Color">
-                            <input type="color" id="customColorInput" value="#ffffff">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Text Brightness/Contrast Controls -->
+                <!-- Text Brightness Controls -->
                 <div class="text-brightness-controls">
                     <div class="brightness-title">Text Brightness:</div>
                     <div class="brightness-slider-container">
@@ -1427,7 +1384,7 @@
                     </div>
                     <div class="image-description">
                         <div class="image-title">Development Setup (2016)</div>
-                        <div class="image-caption">My humble beginnings: coding on an ancient CRT monitor with barely any internet connection.</div>
+
                     </div>
                 </div>
                 
@@ -1786,27 +1743,15 @@
             const toggleDarkMode = document.getElementById('toggleDarkMode');
             const saveForLater = document.getElementById('saveForLater');
             const copyLink = document.getElementById('copyLink');
-            const colorOptions = document.querySelectorAll('.color-option');
-            const customColorInput = document.getElementById('customColorInput');
             const brightnessSlider = document.getElementById('brightnessSlider');
             const brightnessValue = document.getElementById('brightnessValue');
             
             let fontSizePercentage = 100;
-            let currentTextColor = 'var(--text-color)';
             let currentBrightness = 100;
             
-            // Toggle sidebar on mobile
+            // Toggle sidebar
             sidebarToggle.addEventListener('click', function() {
                 blogSidebar.classList.toggle('active');
-                
-                // For phone screens, hide the toggle button when sidebar is open
-                if (window.innerWidth <= 768) { // Phone size threshold
-                    if (blogSidebar.classList.contains('active')) {
-                        sidebarToggle.style.display = 'none';
-                    } else {
-                        sidebarToggle.style.display = 'flex';
-                    }
-                }
                 
                 // Show/hide scroll indicator based on sidebar visibility
                 updateScrollIndicatorVisibility();
@@ -1814,8 +1759,8 @@
             
             // Function to update scroll indicator visibility
             function updateScrollIndicatorVisibility() {
-                // Only show indicator if sidebar is active on mobile
-                if (window.innerWidth <= 992 && !blogSidebar.classList.contains('active')) {
+                // Only show indicator if sidebar is active
+                if (!blogSidebar.classList.contains('active')) {
                     scrollIndicator.style.opacity = '0';
                     scrollIndicator.style.pointerEvents = 'none';
                 } else {
@@ -1851,25 +1796,13 @@
                     !sidebarToggle.contains(e.target)) {
                     blogSidebar.classList.remove('active');
                     
-                    // For phone screens, show the toggle button when sidebar is closed
-                    if (window.innerWidth <= 768) {
-                        sidebarToggle.style.display = 'flex';
-                    }
-                    
                     // Hide scroll indicator when sidebar is closed
                     updateScrollIndicatorVisibility();
                 }
             });
             
-            // Check sidebar toggle visibility on window resize
+            // Check sidebar on window resize
             window.addEventListener('resize', function() {
-                // If sidebar is active on phones, hide toggle
-                if (window.innerWidth <= 768 && blogSidebar.classList.contains('active')) {
-                    sidebarToggle.style.display = 'none';
-                } else if (window.innerWidth <= 768) {
-                    sidebarToggle.style.display = 'flex';
-                }
-                
                 // Check scroll indicator visibility
                 updateScrollIndicatorVisibility();
             });
@@ -1908,8 +1841,8 @@
                 currentFontSizeDisplay.textContent = fontSizePercentage + '%';
                 
                 // Calculate actual font size 
-                const baseFontSize = 1.08; // Base font size for blog content is 1.08rem
-                const firstParagraphBaseFontSize = 1.2; // Base font size for first paragraph
+                const baseFontSize = 1.15; // Base font size for blog content is 1.15rem
+                const firstParagraphBaseFontSize = 1.15; // Base font size for first paragraph
                 
                 const newFontSize = (baseFontSize * fontSizePercentage / 100).toFixed(2) + 'rem';
                 const newFirstParagraphSize = (firstParagraphBaseFontSize * fontSizePercentage / 100).toFixed(2) + 'rem';
@@ -1976,48 +1909,6 @@
                 });
             });
             
-            // Text color change functionality
-            colorOptions.forEach(option => {
-                if (!option.classList.contains('custom-color-picker')) {
-                    option.addEventListener('click', function() {
-                        // Remove active class from all options
-                        colorOptions.forEach(opt => opt.classList.remove('active'));
-                        
-                        // Add active class to clicked option
-                        this.classList.add('active');
-                        
-                        // Get and apply the color
-                        currentTextColor = this.getAttribute('data-color');
-                        updateTextColor();
-                    });
-                }
-            });
-            
-            // Custom color input functionality
-            customColorInput.addEventListener('input', function() {
-                // Get the selected color
-                const selectedColor = this.value;
-                
-                // Remove active class from all options
-                colorOptions.forEach(opt => opt.classList.remove('active'));
-                
-                // Add active class to the custom color picker parent
-                this.parentElement.classList.add('active');
-                
-                // Update current text color
-                currentTextColor = selectedColor;
-                updateTextColor();
-            });
-            
-            // Function to update text color
-            function updateTextColor() {
-                // Apply color to all text in blog content
-                blogContent.style.color = currentTextColor;
-                
-                // Save preference to localStorage
-                localStorage.setItem('blogTextColor', currentTextColor);
-            }
-            
             // Apply theme from localStorage
             const storedTheme = localStorage.getItem('theme');
             if (storedTheme) {
@@ -2043,43 +1934,22 @@
                 // Update display value
                 brightnessValue.textContent = currentBrightness + '%';
                 
-                // Apply filter to blog content
-                // Using brightness filter for direct brightness control
-                // Adding contrast to maintain readability at extreme values
+                // Apply filter to text elements only, not images or gradient elements
                 const contrastValue = currentBrightness > 100 ? 
                     100 + (currentBrightness - 100) * 0.3 : // Increase contrast slightly for higher brightness
                     100 - (100 - currentBrightness) * 0.2;  // Decrease contrast slightly for lower brightness
                 
-                blogContent.style.filter = `brightness(${currentBrightness/100}) contrast(${contrastValue/100})`;
-                
-                // Save to localStorage
-                localStorage.setItem('blogBrightness', currentBrightness);
-            }
-            
-            // Apply text color from localStorage if available
-            const storedTextColor = localStorage.getItem('blogTextColor');
-            if (storedTextColor) {
-                currentTextColor = storedTextColor;
-                blogContent.style.color = currentTextColor;
-                
-                // Check if it's one of the predefined colors
-                let isPresetColor = false;
-                colorOptions.forEach(option => {
-                    if (option.getAttribute('data-color') === currentTextColor) {
-                        option.classList.add('active');
-                        isPresetColor = true;
-                    } else {
-                        option.classList.remove('active');
+                // Apply to paragraphs only (main text content)
+                const textElements = blogContent.querySelectorAll('p');
+                textElements.forEach(element => {
+                    // Don't apply to elements that contain images
+                    if (!element.querySelector('img')) {
+                        element.style.filter = `brightness(${currentBrightness/100}) contrast(${contrastValue/100})`;
                     }
                 });
                 
-                // If it's a custom color
-                if (!isPresetColor) {
-                    // Set the custom color input value
-                    customColorInput.value = currentTextColor;
-                    // Activate the custom color picker
-                    customColorInput.parentElement.classList.add('active');
-                }
+                // Save to localStorage
+                localStorage.setItem('blogBrightness', currentBrightness);
             }
             
             // Apply brightness from localStorage if available
