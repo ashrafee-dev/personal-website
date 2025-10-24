@@ -74,21 +74,34 @@
             max-width: 100%;
             letter-spacing: 0.005rem;
             transition: font-size 0.3s ease;
-            color: #000000;
+            color: #ffffff;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Helvetica', 'Arial', sans-serif;
             font-weight: 500;
         }
         
         .blog-content p {
-            color: #000000;
+            color: #ffffff;
             font-weight: 500;
         }
         
         .blog-content p:first-of-type {
             font-size: 1.15rem;
             font-weight: 500;
-            color: #000000;
+            color: #ffffff;
             transition: font-size 0.3s ease;
+        }
+        
+        /* Light theme blog content */
+        .light-theme .blog-content {
+            color: #000000;
+        }
+        
+        .light-theme .blog-content p {
+            color: #000000;
+        }
+        
+        .light-theme .blog-content p:first-of-type {
+            color: #000000;
         }
         
         .blog-content p strong {
@@ -289,6 +302,11 @@
             border: 1px solid var(--border-color);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             padding: 12px;
+        }
+        
+        /* Hide brightness controls in light mode */
+        .light-theme .text-brightness-controls {
+            display: none;
         }
         
         .brightness-title {
@@ -768,8 +786,13 @@
         }
         
         .highlight-text {
-            color: #000000;
+            color: #5DA3F3;
             font-weight: 900;
+        }
+        
+        /* Light theme highlighted text */
+        .light-theme .highlight-text {
+            color: #000000;
         }
         
 
@@ -1872,6 +1895,9 @@
                     this.querySelector('span').textContent = 'Toggle Dark/Light';
                 }
                 
+                // Update brightness when theme changes (reset in light mode)
+                updateBrightness();
+                
                 // Store preference
                 localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
             });
@@ -1934,18 +1960,37 @@
                 // Update display value
                 brightnessValue.textContent = currentBrightness + '%';
                 
-                // Apply filter to text elements only, not images or gradient elements
+                // Only apply brightness in dark mode
+                if (document.body.classList.contains('light-theme')) {
+                    // In light mode, reset all filters
+                    const textElements = blogContent.querySelectorAll('p');
+                    textElements.forEach(element => {
+                        element.style.filter = 'none';
+                    });
+                    return;
+                }
+                
+                // Apply filter to text elements only in dark mode
                 const contrastValue = currentBrightness > 100 ? 
                     100 + (currentBrightness - 100) * 0.3 : // Increase contrast slightly for higher brightness
                     100 - (100 - currentBrightness) * 0.2;  // Decrease contrast slightly for lower brightness
                 
-                // Apply to paragraphs only (main text content)
+                // Apply to all text paragraphs in the blog content
                 const textElements = blogContent.querySelectorAll('p');
                 textElements.forEach(element => {
-                    // Don't apply to elements that contain images
-                    if (!element.querySelector('img')) {
-                        element.style.filter = `brightness(${currentBrightness/100}) contrast(${contrastValue/100})`;
-                    }
+                    // Only apply to paragraph text, not their child images or image containers
+                    element.style.filter = `brightness(${currentBrightness/100}) contrast(${contrastValue/100})`;
+                });
+                
+                // Reset filter on images and image containers
+                const imageContainers = blogContent.querySelectorAll('.single-image-box, .image-wrap, .image-box');
+                imageContainers.forEach(container => {
+                    container.style.filter = 'none';
+                });
+                
+                const images = blogContent.querySelectorAll('img');
+                images.forEach(img => {
+                    img.style.filter = 'none';
                 });
                 
                 // Save to localStorage
