@@ -1517,6 +1517,23 @@ footer {
         background: var(--primary-color) !important;
     }
     
+    /* Fix statusbar alignment on mobile */
+    .statusbar {
+        margin: 0 !important;
+        width: 100% !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        border-radius: 0 !important;
+    }
+    
+    .light-theme .statusbar {
+        margin: 0 !important;
+        width: 100% !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        border-radius: 0 !important;
+    }
+    
     .section {
         padding: 3rem 3% 2rem; /* Reduced side padding from 5% to 2% */
     }
