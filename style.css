@@ -413,6 +413,7 @@ main {
     margin-left: 300px;
     min-height: 100vh;
     overflow-y: visible;
+    background-color: var(--primary-color);
 }
 
 /* Key Achievements Section */
@@ -1523,6 +1524,7 @@ footer {
         width: 100%;
         padding-left: 0;
         padding-right: 0;
+        background-color: var(--primary-color);
     }
     
     .profile-header {
@@ -3686,6 +3688,7 @@ main {
     padding: 0 15px;
     min-height: 100vh;
     overflow-y: visible;
+    background-color: var(--primary-color);
 }
 
 /* Main content when sidebar is active */
@@ -3699,6 +3702,7 @@ main.sidebar-active {
     width: 100%;
     margin-left: 0;
     padding: 0 15px;
+    background-color: var(--primary-color);
 }
 
 .light-theme main.sidebar-active {
@@ -3878,6 +3882,7 @@ main.sidebar-active {
         width: calc(100% - 270px);
         margin-left: 270px;
         padding: 0 12px;
+        background-color: var(--primary-color);
     }
 }
 
@@ -3912,6 +3917,7 @@ main.sidebar-active {
         width: 100%;
         margin-left: 0;
         padding: 0 20px;
+        background-color: var(--primary-color);
     }
     
     main.sidebar-active {
@@ -4071,7 +4077,7 @@ main.sidebar-active {
 
 .achievements-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(425px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
     width: 100%;
     max-width: 1080px;
@@ -4215,16 +4221,18 @@ main.sidebar-active {
 /* Responsive adjustments for achievements section */
 @media (max-width: 1200px) {
     .achievements-grid {
-        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
     }
 }
 
 @media (max-width: 992px) {
     .achievements-grid {
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         max-width: 95%;
         margin-left: auto;
         margin-right: auto;
+        gap: 1rem;
     }
     
     .achievement-card {
@@ -4492,6 +4500,7 @@ main.sidebar-active {
         margin-right: auto;
         padding: 0;
         overflow-x: hidden; /* Prevent horizontal scrolling */
+        background-color: var(--primary-color);
     }
     
     .section {
