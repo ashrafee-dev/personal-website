@@ -112,10 +112,10 @@
             <!-- Header Icons Group -->
             <div class="header-icons-group">
                 <!-- Mobile Blog Button (visible only on mobile) -->
-                <button class="mobile-blog-button" data-modal-target="#modalProjects5" title="Blog Posts">
+                <a href="blogs.html" class="mobile-blog-button" title="Blog Posts">
                     <i class="fas fa-book"></i>
                     <span>Blog Posts</span>
-                </button>
+                </a>
                 
                 <!-- Theme Toggle -->
                 <button id="theme-toggle" title="Toggle Dark/Light Mode" class="header-theme-toggle">
@@ -125,7 +125,7 @@
                 <!-- Main Navigation -->
                 <ul class="nav-menu">
                    
-                    <li><a href="#" data-modal-target="#modalProjects5"><i class="fas fa-book"></i> Blog Posts</a></li>
+                    <li><a href="blogs.html"><i class="fas fa-book"></i> Blog Posts</a></li>
                     
                 </ul>
                 
@@ -169,7 +169,7 @@
                     </div>
                     <!-- Profile Info on Right -->
                     <div class="profile-info">
-                        <h1 class="greeting typing-animation">Hi, I'm Mahdi.</h1>
+                        <h1 class="greeting">Hi, I'm Mahdi.</h1>
                         
                         <div class="intro-text">
                             <p>I love enjoy building reliable systems that run fast and scale smoothly. I work with <span class="keyword-text">Python</span>, <span class="keyword-text">JavaScript</span>, and <span class="keyword-text">Go</span>, with a focus on cloud technologies, backend architecture, and problem-solving through software.</p>
@@ -1219,61 +1219,7 @@
         updateTime();
         setInterval(updateTime, 60000);
         
-        // Add animation reset for the typing animation
-        document.addEventListener('DOMContentLoaded', function() {
-            const typingElement = document.querySelector('.typing-animation');
-            
-            // Function to restart the typing animation
-            function restartTypingAnimation() {
-                typingElement.style.animation = 'none';
-                typingElement.style.width = '0';
-                typingElement.classList.remove('completed');
-                void typingElement.offsetWidth; // Trigger reflow
-                
-                let animationWidth = '240px';
-                
-                // Adjust animation width based on screen size
-                if (window.innerWidth <= 480) {
-                    animationWidth = '190px'; // Small mobile
-                    typingElement.style.fontSize = '2.2rem';
-                } else if (window.innerWidth <= 768) {
-                    animationWidth = '210px'; // Tablet/mobile
-                }
-                
-                // Set animation with custom width - much faster now
-                typingElement.style.animation = `typing 0.8s steps(9, end) forwards`;
-                
-                // Ensure proper centering on mobile
-                if (window.innerWidth <= 768) {
-                    typingElement.style.margin = '0 auto';
-                    typingElement.style.display = 'block';
-                    typingElement.style.textAlign = 'center';
-                }
-                
-                // Add completed class after animation finishes to remove cursor
-                setTimeout(() => {
-                    typingElement.classList.add('completed');
-                    typingElement.style.width = animationWidth;
-                }, 900); // Shortened timeout to match the faster animation
-            }
-            
-            // Initially restart the animation
-            restartTypingAnimation();
-            
-            // Set up intersection observer to restart when in view
-            const observer = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            restartTypingAnimation();
-                        }
-                    });
-                },
-                { threshold: 0.5 }
-            );
-            
-            observer.observe(typingElement);
-        });
+        // Greeting text animation removed
 
         // Vim-like Command Interface
         document.addEventListener('DOMContentLoaded', function() {

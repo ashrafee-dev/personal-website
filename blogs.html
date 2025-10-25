@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Posts - Mahdi Ashrafee</title>
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+    
+    <style>
+        body {
+            padding-top: 80px;
+            min-height: 100vh;
+        }
+        
+        .blogs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 80px 20px;
+        }
+        
+        .blogs-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .blogs-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .blogs-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .blog-card-wrapper {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .blog-card {
+            background: var(--secondary-color);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .blog-card-wrapper:hover .blog-card {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+        
+        .blog-card-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, #7aa2f7, #7dcfff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-card-image i {
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.9);
+            z-index: 1;
+        }
+        
+        .blog-card-image::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        .blog-card-content {
+            padding: 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        
+        .blog-card-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .blog-card-meta i {
+            font-size: 0.9rem;
+        }
+        
+        .blog-card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--heading-color);
+            line-height: 1.3;
+        }
+        
+        .blog-card-excerpt {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
+        
+        .blog-card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        
+        .blog-tag {
+            padding: 4px 12px;
+            background: rgba(var(--accent-rgb), 0.1);
+            color: var(--accent-color);
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .blog-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-color);
+            font-weight: 600;
+            text-decoration: none;
+            transition: gap 0.3s ease;
+        }
+        
+        .blog-card-wrapper:hover .blog-card-link {
+            gap: 12px;
+        }
+        
+        .blog-card-link i {
+            transition: transform 0.3s ease;
+        }
+        
+        .blog-card-wrapper:hover .blog-card-link i {
+            transform: translateX(4px);
+        }
+        
+        .blog-card.disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .blog-card.disabled:hover {
+            transform: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        .coming-soon-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .blogs-container {
+                padding: 30px 15px 60px 15px;
+            }
+            
+            .blogs-header {
+                margin-bottom: 40px;
+            }
+            
+            .blogs-title {
+                font-size: 2.2rem;
+            }
+            
+            .blogs-subtitle {
+                font-size: 1rem;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .blog-card-image {
+                height: 180px;
+            }
+            
+            .blog-card-image i {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .blogs-title {
+                font-size: 2rem;
+            }
+            
+            .blog-card-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body class="light-theme">
+    <header>
+        <nav>
+            <!-- Logo -->
+            <div class="logo">
+                <a href="index.html" class="logo-link">Mahdi Ashrafee</a>
+            </div>
+            
+            <!-- Header Icons Group -->
+            <div class="header-icons-group">
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" title="Toggle Dark/Light Mode" class="header-theme-toggle">
+                    <i class="fas fa-sun"></i>
+                </button>
+                
+                <!-- Main Navigation -->
+                <ul class="nav-menu">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="blogs-container">
+            <div class="blogs-header">
+                <h1 class="blogs-title">📚 Blog Posts</h1>
+                <p class="blogs-subtitle">Stories, experiences, and thoughts on technology</p>
+            </div>
+            
+            <div class="blog-grid">
+                <!-- Published Blog -->
+                <a href="blog-how-it-started.html" class="blog-card-wrapper">
+                    <article class="blog-card">
+                        <div class="blog-card-image" style="background: linear-gradient(135deg, #7aa2f7, #7dcfff);">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="blog-card-meta">
+                                <span><i class="far fa-calendar"></i> December 2024</span>
+                                <span><i class="far fa-clock"></i> 5 min read</span>
+                            </div>
+                            <h2 class="blog-card-title">How It All Started</h2>
+                            <p class="blog-card-excerpt">
+                                A story about learning to code without Wi-Fi, on ancient computers, and why sometimes limitations push you to be more creative.
+                            </p>
+                            <div class="blog-card-tags">
+                                <span class="blog-tag">Personal</span>
+                                <span class="blog-tag">Journey</span>
+                                <span class="blog-tag">Coding</span>
+                            </div>
+                            <div class="blog-card-link">
+                                <span>Read Article</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+
+                <!-- Coming Soon Blog 1 -->
+                <article class="blog-card disabled">
+                    <div class="blog-card-image" style="background: linear-gradient(135deg, #bb9af7, #c0caf5);">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-meta">
+                            <span><i class="far fa-calendar"></i> Coming Soon</span>
+                            <span class="coming-soon-badge">Draft</span>
+                        </div>
+                        <h2 class="blog-card-title">Building Scalable Systems</h2>
+                        <p class="blog-card-excerpt">
+                            Lessons learned from architecting distributed systems that handle millions of requests. Key principles, trade-offs, and practical insights.
+                        </p>
+                        <div class="blog-card-tags">
+                            <span class="blog-tag">Architecture</span>
+                            <span class="blog-tag">Backend</span>
+                            <span class="blog-tag">Scalability</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Coming Soon Blog 2 -->
+                <article class="blog-card disabled">
+                    <div class="blog-card-image" style="background: linear-gradient(135deg, #f7768e, #ff9e64);">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-meta">
+                            <span><i class="far fa-calendar"></i> Coming Soon</span>
+                            <span class="coming-soon-badge">Draft</span>
+                        </div>
+                        <h2 class="blog-card-title">Learning Go as a Java Developer</h2>
+                        <p class="blog-card-excerpt">
+                            Why I chose Go for backend development, the challenges of transitioning from Java, and how it changed my approach to building applications.
+                        </p>
+                        <div class="blog-card-tags">
+                            <span class="blog-tag">Go</span>
+                            <span class="blog-tag">Java</span>
+                            <span class="blog-tag">Backend</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Coming Soon Blog 3 -->
+                <article class="blog-card disabled">
+                    <div class="blog-card-image" style="background: linear-gradient(135deg, #9ece6a, #73daca);">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-meta">
+                            <span><i class="far fa-calendar"></i> Coming Soon</span>
+                            <span class="coming-soon-badge">Draft</span>
+                        </div>
+                        <h2 class="blog-card-title">Optimizing Database Performance</h2>
+                        <p class="blog-card-excerpt">
+                            Deep dive into PostgreSQL optimization techniques, indexing strategies, and query optimization that reduced response times by 90%.
+                        </p>
+                        <div class="blog-card-tags">
+                            <span class="blog-tag">Database</span>
+                            <span class="blog-tag">PostgreSQL</span>
+                            <span class="blog-tag">Performance</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- Status Bar -->
+    <div class="statusbar">
+        <div class="statusbar-left">
+            <div class="statusbar-mode">Active</div>
+            <div class="statusbar-item">blogs.html</div>
+            <div class="statusbar-item copyright">© 2025 Mahdi Ashrafee</div>
+        </div>
+        <div class="statusbar-right">
+            <div class="statusbar-item"><i class="fas fa-code-branch"></i>main</div>
+            <div class="statusbar-item"><i class="fas fa-clock"></i><span id="current-time">00:00</span></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        // Update current time
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            document.getElementById('current-time').textContent = timeString;
+        }
+        updateTime();
+        setInterval(updateTime, 60000);
+    </script>
+</body>
+</html>
+

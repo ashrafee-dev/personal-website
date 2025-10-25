@@ -569,6 +569,12 @@ main {
     padding-top: 1rem;
 }
 
+@media (max-width: 768px) {
+    .profile-info {
+        text-align: center;
+    }
+}
+
 .greeting {
     font-size: 3.2rem;
     font-weight: 800;
@@ -1785,10 +1791,7 @@ footer {
         padding-bottom: 10px;
     }
     
-    @keyframes typing {
-        from { width: 0 }
-        to { width: 190px }
-    }
+    /* Typing animation now uses fadeInUp */
     
     /* Make logo smaller on very small screens */
     .logo {
@@ -2941,35 +2944,33 @@ footer {
 
 /* Typing animation for greeting */
 .typing-animation {
-    overflow: hidden;
-    border-right: 0.15em solid var(--accent-color);
     white-space: nowrap;
     margin: 0;
-    width: 0;
-    animation: 
-        typing 1.2s steps(14, end) forwards,
-        blink-cursor 1s step-end infinite;
     position: relative;
     display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease-out 0.3s forwards;
 }
 
 .typing-animation.completed {
-    border-right: 0.15em solid var(--accent-color); /* Keep the cursor visible */
-    animation: blink-cursor 1s step-end infinite;
-    white-space: nowrap;
+    opacity: 1;
+    transform: translateY(0);
 }
 
-/* Add animation to hide cursor after typing completes */
-@keyframes typing {
+/* Smooth fade in and slide up animation */
+@keyframes fadeInUp {
     from { 
-        width: 0;
+        opacity: 0;
+        transform: translateY(20px);
     }
     to { 
-        width: 340px;
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-/* Cursor blink animation */
+/* Old cursor blink animation - keeping for compatibility */
 @keyframes blink-cursor {
     0%, 100% { 
         border-right-color: var(--accent-color); 
@@ -2988,10 +2989,7 @@ footer {
         white-space: nowrap;
     }
     
-    @keyframes typing {
-        from { width: 0 }
-        to { width: 340px }
-    }
+    /* Typing animation now uses fadeInUp */
     
     /* Center the animation on mobile screens */
     .greeting.typing-animation {
@@ -3002,14 +3000,12 @@ footer {
 }
 
 @media (max-width: 480px) {
-    @keyframes typing {
-        from { width: 0 }
-        to { width: 230px }
-    }
+    /* Typing animation now uses fadeInUp */
     
     .greeting {
         font-size: 2.2rem;
         white-space: nowrap;
+        text-align: center;
     }
 }
 
@@ -4340,11 +4336,7 @@ main.sidebar-active {
         min-width: 200px;
     }
     
-    /* Make typing animation narrower on smaller screens */
-    @keyframes typing {
-        from { width: 0 }
-        to { width: 300px }
-    }
+    /* Typing animation now uses fadeInUp */
     
     /* Make achievement cards stack on mobile */
     .achievements-grid {
@@ -4397,18 +4389,14 @@ main.sidebar-active {
 
 @media (max-width: 768px) {
     .typing-animation {
-        width: 0;
         margin: 0 auto;
         display: block;
     }
     
-    @keyframes typing {
-        from { width: 0 }
-        to { width: 270px }
-    }
+    /* Typing animation now uses fadeInUp */
     
-    /* Center the animation on mobile screens */
-    .greeting.typing-animation {
+    /* Center the greeting on mobile screens */
+    .greeting {
         text-align: center;
         margin: 0 auto;
     }
@@ -4479,15 +4467,11 @@ main.sidebar-active {
     }
     
     .typing-animation {
-        width: 0;
         margin: 0 auto;
         display: block;
     }
     
-    @keyframes typing {
-        from { width: 0 }
-        to { width: 350px }
-    }
+    /* Typing animation now uses fadeInUp */
     
     /* Center the animation on medium screens */
     .greeting.typing-animation {
@@ -4502,14 +4486,12 @@ main.sidebar-active {
 }
 
 @media (max-width: 480px) {
-    @keyframes typing {
-        from { width: 0 }
-        to { width: 300px }
-    }
+    /* Typing animation now uses fadeInUp */
     
     .greeting {
         font-size: 2.2rem;
         white-space: nowrap;
+        text-align: center;
     }
 }
 
