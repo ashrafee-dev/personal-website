@@ -570,26 +570,30 @@ main {
 }
 
 .greeting {
-    font-size: 2.8rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
+    font-size: 3.2rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
     color: var(--text-color);
     line-height: 1.1;
     font-family: var(--font-family-sans);
     display: inline-block;
+    text-align: center;
 }
 
-.intro-text { 
-    text-align: left;
-    max-width: 95%;
+
+.intro-text {
+    max-width: 60ch; /* Limit line length to ~60 characters */
+    margin: 2rem 0; /* Add more spacing above/below */
 }
 
 .intro-text p {
-    font-size: 1.05rem;
-    margin-bottom: 0.8rem;
-    line-height: 1.5;
-    color: var(--text-color);
-    font-family: var(--font-family-sans);
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.7;
+    color: #000000;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Helvetica', 'Arial', sans-serif;
+    font-weight: 400; /* Normal weight for body text */
+    text-align: left; /* Left-align body text */
 }
 
 .highlighted-text {
@@ -3425,7 +3429,8 @@ footer {
 
 .light-theme .greeting,
 .light-theme .intro-text p {
-    color: var(--text-color);
+    color: #000000;
+    font-weight: 600;
 }
 
 /* Left Sidebar Toggle Button - Always visible */
