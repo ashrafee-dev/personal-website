@@ -22,7 +22,13 @@
     <style>
         /* Blog specific styles */
         body {
-            padding-bottom: 40px;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+        
+        html {
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
         
         main {
@@ -43,9 +49,42 @@
         
         .blog-container {
             max-width: 900px;
-            margin: 0 auto;
-            padding: 30px 25px 50px;
+            margin: 40px auto;
+            padding: 60px 80px 120px 80px;
             flex-grow: 1;
+            background-color: var(--primary-color);
+            border: 1px solid var(--border-color);
+            border-radius: 2px;
+            box-shadow: 
+                0 2px 4px rgba(0, 0, 0, 0.1),
+                0 8px 16px rgba(0, 0, 0, 0.1),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+        
+        /* Book page effect - left binding shadow */
+        .blog-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.03), transparent);
+            pointer-events: none;
+        }
+        
+        /* Light theme book page */
+        .light-theme .blog-container {
+            background-color: #ffffff;
+            box-shadow: 
+                0 2px 4px rgba(0, 0, 0, 0.08),
+                0 8px 16px rgba(0, 0, 0, 0.08),
+                inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+        }
+        
+        .light-theme .blog-container::before {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.04), transparent);
         }
         
         .blog-header {
@@ -470,7 +509,7 @@
             border: 1px solid var(--border-color);
             color: var(--accent-color);
             border-radius: 8px;
-            width: 44px;
+            width: auto;
             height: 44px;
             align-items: center;
             justify-content: center;
@@ -479,6 +518,51 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             overflow: hidden;
             transition: all 0.3s ease;
+            padding: 0 12px;
+            gap: 8px;
+        }
+        
+        .toggle-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--accent-color);
+        }
+        
+        /* Mobile Home Button */
+        .mobile-home-button {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: none;
+            border: none;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        /* Show mobile home button on small and medium screens */
+        @media (max-width: 1024px) {
+            .mobile-home-button {
+                display: flex;
+            }
+            
+            /* Hide regular nav menu on medium screens */
+            .nav-menu {
+                display: none;
+            }
+        }
+        
+        .mobile-home-button:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            transform: translateY(-1px);
+        }
+        
+        .mobile-home-button i {
+            font-size: 1rem;
         }
         
         .blog-sidebar-toggle:hover {
@@ -548,8 +632,12 @@
         @media (max-width: 768px) {
             /* Add padding to prevent overlap with toggle button */
             .blog-container {
-                padding-left: 90px;
-                padding-right: 25px;
+                margin: 20px;
+                padding: 40px 30px;
+            }
+            
+            .blog-container::before {
+                width: 20px;
             }
             
             .blog-title {
@@ -1253,38 +1341,20 @@
                     </a>
                 </div>
                 
-                <!-- Hamburger Menu Icon for Mobile -->
-                <button class="hamburger-menu" id="hamburger-toggle" aria-label="Menu">
-                    <div class="hamburger-icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </button>
+                <!-- Home Button for Mobile -->
+                <a href="index.html" class="mobile-home-button">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
             </div>
         </nav>
     </header>
 
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-overlay" id="mobile-overlay"></div>
-    
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobile-menu">
-        <button class="mobile-close" id="mobile-close">
-            <i class="fas fa-times"></i>
-        </button>
-        <div class="mobile-menu-buttons">
-            <!-- Mobile menu buttons -->
-            <button class="mobile-menu-button" onclick="window.location.href='index.html'">
-                <i class="fas fa-home"></i>
-                <span>Home</span>
-            </button>
-        </div>
-    </div>
     
     <!-- Mobile sidebar toggle button -->
     <div class="blog-sidebar-toggle" id="sidebarToggle">
         <i class="fas fa-terminal"></i>
+        <span class="toggle-text">Settings</span>
     </div>
     
     <!-- Scroll Indicator -->
