@@ -50,7 +50,7 @@
         .blog-container {
             max-width: 900px;
             margin: 40px auto;
-            padding: 60px 80px 120px 80px;
+            padding: 80px 80px 120px 80px;
             flex-grow: 1;
             background-color: var(--primary-color);
             border: 1px solid var(--border-color);
@@ -89,22 +89,31 @@
         
         .blog-header {
             margin-bottom: 40px;
+            margin-top: 40px;
             text-align: center;
         }
         
         .blog-title {
-            font-size: 2.8rem;
-            margin-bottom: 15px;
+            font-size: 3.2rem;
+            margin-bottom: 20px;
             background: var(--gradient-blue);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            font-weight: 800;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         
         .blog-metadata {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 20px;
+            font-size: 1rem;
+            color: var(--accent-color);
+            margin-bottom: 25px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
         }
         
         .blog-content {
@@ -128,6 +137,91 @@
             font-weight: 500;
             color: #ffffff;
             transition: font-size 0.3s ease;
+        }
+        
+        /* Story Preview Styling */
+        .story-preview {
+            background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.1), rgba(var(--accent-rgb), 0.05));
+            border: 2px solid var(--accent-color);
+            border-radius: 15px;
+            padding: 25px 30px;
+            margin: 30px 0 35px 0;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .story-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .story-content p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            margin: 0;
+            line-height: 1.6;
+            text-align: center;
+            font-style: italic;
+        }
+        
+        .warning-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.2), rgba(255, 193, 7, 0.1));
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+            animation: pulse-warning 2s infinite;
+        }
+        
+        .warning-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            animation: bounce-warning 1.5s infinite;
+        }
+        
+        .warning-text {
+            font-size: 1rem;
+            color: #ffc107;
+            font-weight: 600;
+            line-height: 1.4;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        @keyframes pulse-warning {
+            0%, 100% { box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3); }
+            50% { box-shadow: 0 6px 16px rgba(255, 193, 7, 0.5); }
+        }
+        
+        @keyframes bounce-warning {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+        
+        /* Light theme warning */
+        .light-theme .warning-box {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.25), rgba(255, 193, 7, 0.15));
+            border-color: #ffc107;
+        }
+        
+        .light-theme .warning-text {
+            color: #b8860b;
+        }
+        
+        /* Light theme story preview */
+        .light-theme .story-preview {
+            background: linear-gradient(135deg, rgba(122, 162, 247, 0.1), rgba(122, 162, 247, 0.05));
+            border-color: var(--accent-color);
+        }
+        
+        .light-theme .story-content p {
+            color: #000000;
         }
         
         /* Light theme blog content */
@@ -632,8 +726,13 @@
         @media (max-width: 768px) {
             /* Add padding to prevent overlap with toggle button */
             .blog-container {
-                margin: 20px;
-                padding: 40px 30px;
+                margin: 80px 0 0 0;
+                padding: 5px 2px;
+                max-width: 100%;
+            }
+            
+            .blog-header {
+                margin-top: 20px;
             }
             
             .blog-container::before {
@@ -645,7 +744,11 @@
             }
             
             .blog-content {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
+            }
+            
+            .blog-content p:first-of-type {
+                font-size: 1.2rem;
             }
             
             .image-container {
@@ -737,123 +840,86 @@
         }
         
         .timeline-marker {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.15), rgba(var(--accent-rgb), 0.08));
+            border-left: 4px solid var(--accent-color);
+            padding: 12px 24px;
+            margin: 50px 0 30px 0;
+            border-radius: 0 8px 8px 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Helvetica', 'Arial', sans-serif;
+            color: var(--text-color);
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             position: relative;
-            padding-left: 30px;
-            margin: 40px 0;
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--accent-color);
-            font-size: 0.9rem;
-            opacity: 0.8;
         }
         
-        .timeline-marker:before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 20px;
-            height: 1px;
-            background-color: var(--accent-color);
+        .timeline-marker::before {
+            content: "📅";
+            margin-right: 8px;
+            font-size: 1.2rem;
         }
         
-        .timeline-marker:after {
-            content: "⦿";
-            position: absolute;
-            left: 20px;
-            top: 0;
-            font-size: 12px;
-            opacity: 0.7;
+        /* Light theme timeline */
+        .light-theme .timeline-marker {
+            background: linear-gradient(135deg, rgba(122, 162, 247, 0.12), rgba(122, 162, 247, 0.06));
+            color: #000000;
         }
         
         .single-image-box {
-            width: 85%;
-            max-width: 600px;
-            margin: 30px auto;
-            background-color: var(--secondary-color);
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
-            border: 1px solid var(--border-color);
+            width: 90%;
+            max-width: 700px;
+            margin: 40px auto;
+            background-color: transparent;
+            border-radius: 12px;
+            padding: 0;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            border: none;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             overflow: hidden;
             position: relative;
         }
         
-        .single-image-box:before {
-            content: "/* Image */";
-            position: absolute;
-            top: 8px;
-            right: 12px;
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--text-muted);
-            font-size: 0.75rem;
-            opacity: 0.6;
-            z-index: 1;
-        }
-        
         .single-image-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
         }
         
         .image-wrap {
             overflow: hidden;
-            border-radius: 4px;
-            margin-bottom: 12px;
+            border-radius: 12px;
+            margin-bottom: 0;
             position: relative;
-            max-height: 350px;
-        }
-        
-        .image-wrap:after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: linear-gradient(
-                rgba(var(--accent-rgb), 0.08),
-                rgba(0, 0, 0, 0.05)
-            );
-            pointer-events: none;
+            max-height: 500px;
         }
         
         .image-wrap img {
-            object-fit: contain;
+            object-fit: cover;
             width: 100%;
             height: auto;
-            max-height: 350px;
-            border: 1px solid var(--border-color);
-            transition: transform 0.4s ease;
+            max-height: 500px;
+            border: none;
+            transition: transform 0.4s ease, filter 0.3s ease;
+            display: block;
         }
         
         .image-wrap:hover img {
-            transform: scale(1.02);
+            transform: scale(1.05);
         }
         
         .image-description {
-            padding: 5px 5px 0;
+            padding: 20px;
+            background: var(--primary-color);
+            border-radius: 0 0 12px 12px;
         }
         
         .image-caption {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
-            line-height: 1.4;
+            line-height: 1.6;
             transition: color 0.3s ease;
-            position: relative;
-            padding-left: 15px;
-        }
-        
-        .image-caption:before {
-            content: "//";
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: var(--accent-color);
-            opacity: 0.7;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
+            text-align: center;
+            font-style: italic;
         }
         
         .image-box:hover .image-caption {
@@ -861,11 +927,11 @@
         }
         
         .image-title {
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 600;
-            margin-bottom: 3px;
-            color: var(--accent-color);
-            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            text-align: center;
         }
         
         .highlight {
@@ -885,91 +951,6 @@
         
 
         
-        /* Development setup styling */
-        .dev-setup {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-            border-left: 3px solid #7aa2f7;
-            position: relative;
-            background: linear-gradient(to bottom, rgba(22, 25, 37, 0.9), rgba(30, 34, 47, 0.95));
-            transform: perspective(1000px) rotateY(-2deg);
-            transition: all 0.4s ease;
-        }
-        
-        .dev-setup:hover {
-            transform: perspective(1000px) rotateY(0deg);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
-        }
-        
-        .dev-setup:before {
-            content: "/* Dev */";
-            color: #7aa2f7;
-            opacity: 0.9;
-            font-size: 0.9rem;
-            top: 8px;
-            right: 12px;
-        }
-        
-        .dev-setup .image-title {
-            color: #7aa2f7;
-            font-weight: 600;
-        }
-        
-        .dev-setup:after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, rgba(122, 162, 247, 0.3) 0%, transparent 60%);
-            border-radius: 8px 0 0 0;
-            opacity: 0.6;
-            pointer-events: none;
-        }
-        
-        .dev-setup .image-wrap {
-            border: 1px solid rgba(122, 162, 247, 0.3);
-            box-shadow: inset 0 0 15px rgba(122, 162, 247, 0.1);
-        }
-        
-        .dev-setup .image-wrap img {
-            filter: contrast(1.05) brightness(1.05);
-            transition: all 0.5s ease;
-        }
-        
-        .dev-setup .image-wrap:hover img {
-            transform: scale(1.04);
-            filter: contrast(1.1) brightness(1.08);
-        }
-        
-        /* Final product styling */
-        .final-product {
-            border-right: 2px solid var(--accent-color);
-            box-shadow: 0 6px 20px rgba(var(--accent-rgb), 0.2);
-        }
-        
-        .final-product:before {
-            content: "/* Final */";
-            color: var(--accent-color);
-            opacity: 0.8;
-        }
-        
-        .final-product .image-title {
-            color: var(--accent-color);
-        }
-        
-        .final-product:after {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--accent-color) 0%, transparent 50%);
-            border-radius: 0 8px 0 0;
-            opacity: 0.4;
-            pointer-events: none;
-        }
         
         /* Command interface styling */
         .command-overlay {
@@ -1081,20 +1062,21 @@
         }
         
         .comments-title {
-            font-size: 1.4rem;
-            color: var(--accent-color);
-            font-weight: 600;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            font-weight: 700;
             margin: 0;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Helvetica', 'Arial', sans-serif;
         }
         
         .comments-count {
             font-size: 0.9rem;
             color: var(--text-muted);
-            padding: 4px 10px;
-            border-radius: 15px;
-            background-color: rgba(var(--accent-rgb), 0.08);
-            font-family: 'JetBrains Mono', monospace;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background-color: var(--secondary-color);
+            border: 1px solid var(--border-color);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Helvetica', 'Arial', sans-serif;
         }
         
         .comment-form {
@@ -1107,16 +1089,6 @@
             position: relative;
         }
         
-        .comment-form::before {
-            content: "/* New Comment */";
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            color: var(--text-muted);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            opacity: 0.6;
-        }
         
         .form-group {
             margin-bottom: 15px;
@@ -1136,17 +1108,19 @@
         
         .input-prefix {
             color: var(--accent-color);
-            font-family: 'JetBrains Mono', monospace;
-            margin-right: 5px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Helvetica', 'Arial', sans-serif;
+            margin-right: 8px;
+            font-weight: 600;
         }
         
         #commentName, #commentText {
             background-color: transparent;
             border: none;
             color: var(--text-color);
-            font-family: 'JetBrains Mono', monospace;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Helvetica', 'Arial', sans-serif;
             width: 100%;
             outline: none;
+            font-size: 0.95rem;
         }
         
         #commentText {
@@ -1161,27 +1135,29 @@
         }
         
         .submit-button {
-            background: linear-gradient(135deg, var(--accent-color) 0%, rgba(var(--accent-rgb), 0.8) 100%);
+            background: var(--accent-color);
             color: #fff;
             border: none;
-            padding: 8px 20px;
-            border-radius: 4px;
+            padding: 12px 28px;
+            border-radius: 8px;
             cursor: pointer;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Helvetica', 'Arial', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
             display: flex;
             align-items: center;
-            transition: transform 0.2s, box-shadow 0.2s;
+            gap: 8px;
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
         }
         
         .submit-button i {
-            margin-right: 5px;
+            font-size: 0.9rem;
         }
         
         .submit-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(var(--accent-rgb), 0.3);
+            box-shadow: 0 6px 16px rgba(var(--accent-rgb), 0.4);
+            background-color: rgba(var(--accent-rgb), 0.9);
         }
         
         .comments-list {
@@ -1217,7 +1193,8 @@
         .comment-author {
             font-weight: 600;
             color: var(--accent-color);
-            font-family: 'JetBrains Mono', monospace;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Helvetica', 'Arial', sans-serif;
+            font-size: 1rem;
         }
         
         .comment-date {
@@ -1450,26 +1427,35 @@
 
         <div class="blog-container">
             <div class="blog-header">
-                <h1 class="blog-title">My Journey</h1>
+                <h1 class="blog-title">🚀 How It All Started</h1>
                 <div class="blog-metadata">
-                    <i class="far fa-calendar-alt"></i> Published on <span class="highlight">July 15, 2023</span>
-                    <span class="separator">|</span>
-                    <i class="fas fa-tags"></i> <span class="highlight">Personal Journey</span>
+                    <span><i class="far fa-calendar-alt"></i> July 15, 2023</span>
+                    <span><i class="fas fa-clock"></i> 5 min read</span>
+                    <span><i class="fas fa-tags"></i> Personal Journey</span>
                 </div>
             </div>
             
             <div class="blog-content">
-                <p>I didn't grow up planning to be an engineer.</p>
+                <div class="story-preview">
+                    <div class="story-title">📖 The Story</div>
+                    <div class="story-content">
+                        <p>This is just a story about how I accidentally got into programming. No lessons, no examples — just what happened.</p>
+                        <div class="warning-box">
+                            <span class="warning-icon">⚠️</span>
+                            <span class="warning-text">Warning: If you started your programming journey on ancient computers, this might feel very relatable.</span>
+                        </div>
+                    </div>
+                </div>
                 
-                <p>Back in <span class="highlight-text">primary school</span>, I lived in a <strong>village</strong> where students relied heavily on guidebooks to pass exams — but many couldn't afford them. At the same time, I noticed something: even families who struggled to buy school supplies often had a <span class="highlight-text">phone</span> at home.</p>
+                <p>You know how in some places, students need those expensive guidebooks to pass exams? Back in <span class="highlight-text">elementary school</span>, most families in my <strong>village</strong> couldn't afford them. But here's the thing — almost everyone had a <span class="highlight-text">phone</span>.</p>
                 
                 <div class="timeline-marker">
                     Early 2016
                 </div>
                 
-                <p>That gave me an idea.</p>
+                <p>So I started tinkering. Without Wi-Fi, learning anything meant downloading stuff on mobile data — tutorials, tools, whatever I could find. I played around with <strong>After Effects</strong>, tried <strong>Photoshop</strong>, explored different software. Just experimenting, really.</p>
                 
-                <p>I wanted to build a <strong>free Android app</strong> with basic educational content — stories, letters, paragraphs — to help kids like me study. There was just one problem: I didn't know how to code. We had <span class="highlight-text">no Wi-Fi</span>. And downloading Android Studio? That was an entire mission.</p>
+                <p>While messing around with all this, an idea popped up: what if I built a <strong>simple Android app</strong> with free educational content? Stories, letters, paragraphs — basic stuff to help students study. Problem was, I had <span class="highlight-text">no clue how to code</span>. And downloading Android Studio with <span class="highlight-text">no Wi-Fi</span>? That was a whole mission on its own.</p>
                 
                 <div class="single-image-box dev-setup">
                     <div class="image-wrap">
@@ -1481,7 +1467,7 @@
                     </div>
                 </div>
                 
-                <p>I used to stash away my lunch money and walk <span class="highlight-text">half a mile</span> to the nearest store—just to buy a bit of mobile bandwidth for my phone. It wasn't a one-time mission; I made that trip over and over again. And just as often, I failed. Sometimes the Android Studio installer would crawl to 50%, only to throw a <span class="highlight-text">"storage full"</span> error and wipe out all the data—and my hard-earned money. Other times, the downloads would corrupt, or the installer would crash for no reason. I learned to stretch <span class="highlight-text">every megabyte</span>, using it to read tutorials, grab tools, and troubleshoot the bugs I didn't yet know how to fix. Just downloading Android Studio took <span class="highlight-text">12 hours</span>—half a day of holding my breath, praying the signal wouldn't drop. Every step was a grind, from getting my first <strong>onClickListener</strong> right to figuring out why the emulator stubbornly refused to open.</p>
+                <p>You know how hard it is to download something when you don't have Wi-Fi? Try walking <span class="highlight-text">half a mile</span> to buy mobile data with whatever money you saved, then watching your download hit 50% before crashing with a <span class="highlight-text">"storage full"</span> error. All that money and time — gone. This happened over and over. Downloads would corrupt, installers would fail, signals would drop. Every megabyte mattered. Just getting Android Studio took <span class="highlight-text">12 hours</span> of praying nothing would break. Then came figuring out what an <strong>onClickListener</strong> even was, or why the emulator refused to start.</p>
                 
                 <p>My computer itself was another battle. With only <span class="highlight-text">1GB of RAM</span>, every compilation was a test of patience. I lost count of how many times I had to restart the PC when it froze — probably a <strong>billion</strong>. Eventually, I managed to upgrade the RAM, only to discover my hard disk was <span class="highlight-text">too small</span> to even handle the extra memory effectively. The constant disk thrashing sound became the soundtrack of my coding sessions.</p>
                 
@@ -1491,11 +1477,11 @@
                 
                 <p>I didn't have access to <span class="highlight-text">mentors</span> or <span class="highlight-text">YouTube tutorials</span>. When I got stuck, I'd leave it, come back later, and keep going. It was isolating — programming without guidance or feedback. There were days when I wondered if it was worth the effort, especially when running into the <strong>same errors</strong> over and over.</p>
                 
-                <p>Sometimes, I'd even <span class="highlight-text">skip school</span>. Not because I didn't value education, but because some days, solving a coding problem seemed more important than sitting through classes that felt distant from what I was trying to build.</p>
+               
                 
                 <p>It was an odd feeling — building something to help others while feeling somewhat disconnected myself.</p>
                 
-                <p>After <strong>months of trial-and-error</strong>, sleepless nights, and a progress bar that seemed frozen in time, I finally held a working APK in my hands. I couldn't afford the <span class="highlight-text">$25 Play Store fee</span> at first, but later I managed — and in <strong>2018</strong>, I published it to the Play Store. It only had a few users, and it's been deleted since, but it was <strong>real</strong>, and it <strong>worked</strong>.</p>
+                <p>After <strong>months of trial-and-error</strong>, sleepless nights, and a progress bar that seemed frozen in time, I finally held a working APK in my hands. I couldn't afford the <span class="highlight-text">$25 Play Store fee</span> at first, but later I managed — and in <strong>2018</strong>, I published it to the Play Store. It only had a few users, but it was <strong>real</strong>, and it <strong>worked</strong>.</p>
                 
                 <div class="single-image-box final-product">
                     <div class="image-wrap">
@@ -1522,7 +1508,7 @@
             <!-- Comments Section -->
             <div class="comments-section">
                 <div class="comments-header">
-                    <h3 class="comments-title">// Comments</h3>
+                    <h3 class="comments-title">Comments</h3>
                     <span class="comments-count" id="commentsCount">0 comments</span>
                 </div>
                 
