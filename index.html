@@ -359,6 +359,13 @@
             </div>
         </div>
         
+        <div class="sidebar-section">
+            <button class="sidebar-projects-button" onclick="openModal('#modalProjects1')">
+                <i class="fas fa-folder-open"></i>
+                <span>Projects</span>
+            </button>
+        </div>
+        
         <div class="sidebar-section sidebar-tip">
             <div class="vim-command-tip">
                 <i class="fas fa-lightbulb"></i>
@@ -1208,6 +1215,20 @@
     <!-- Scripts -->
     <script src="script.js"></script>
     <script>
+        // Global modal helper functions (accessible from onclick handlers)
+        function openModal(modalId) {
+            closeAllModals();
+            const modal = document.querySelector(modalId);
+            if (modal) {
+                modal.classList.add('active');
+            }
+        }
+        
+        function closeAllModals() {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => modal.classList.remove('active'));
+        }
+        
         // Update current time in status bar
         function updateTime() {
             const now = new Date();
@@ -1342,19 +1363,6 @@
                 if (command !== 'help' && command !== ':help' && !command.startsWith('unknown')) {
                     closeCommandInterface();
                 }
-            }
-            
-            // Open modal helper
-            function openModal(modalId) {
-                closeAllModals();
-                const modal = document.querySelector(modalId);
-                modal.classList.add('active');
-            }
-            
-            // Close all modals helper
-            function closeAllModals() {
-                const modals = document.querySelectorAll('.modal');
-                modals.forEach(modal => modal.classList.remove('active'));
             }
 
             // Display available tabs in Neovim-style buffer list
