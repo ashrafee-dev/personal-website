@@ -1500,6 +1500,23 @@ footer {
 }
 
 @media (max-width: 768px) {
+    /* Simplify background for mobile to prevent white lines */
+    body:not(.light-theme) {
+        background: var(--primary-color) !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    body:not(.light-theme)::before {
+        display: none !important;
+    }
+    
+    html {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: var(--primary-color) !important;
+    }
+    
     .section {
         padding: 3rem 3% 2rem; /* Reduced side padding from 5% to 2% */
     }
