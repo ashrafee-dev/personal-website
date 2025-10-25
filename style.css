@@ -596,6 +596,17 @@ main {
     text-align: left; /* Left-align body text */
 }
 
+/* Dark mode intro text */
+.dark-theme .intro-text p {
+    color: #ffffff;
+}
+
+/* Keyword text styling */
+.keyword-text {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
 .highlighted-text {
     color: var(--accent-color);
     font-weight: 600;
