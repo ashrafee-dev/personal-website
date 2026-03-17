@@ -4,68 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('year').textContent = new Date().getFullYear();
     }
 
-    // Theme toggle
-    const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-        const setTheme = isDark => {
-            document.body.classList[isDark ? 'add' : 'remove']('dark-theme');
-            document.body.classList[!isDark ? 'add' : 'remove']('light-theme');
-            
-            // Update theme indicator in header
-            const themeIcon = themeToggle.querySelector('i');
-            themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-            
-            // Update statusbar theme indicator if it exists
-            const statusThemeIndicator = document.querySelector('.theme-indicator');
-            if (statusThemeIndicator) {
-                const statusThemeIcon = statusThemeIndicator.querySelector('i');
-                const statusThemeText = statusThemeIndicator.querySelector('span');
-                
-                if (statusThemeIcon) {
-                    statusThemeIcon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
-                }
-                
-                if (statusThemeText) {
-                    statusThemeText.textContent = isDark ? 'DARK' : 'LIGHT';
-                }
-            }
-            
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        };
-    
-        // Check localStorage for user preference, but default to dark theme if not set
-        const userPreference = localStorage.getItem('theme');
-        // Default to dark theme unless explicitly set to light
-        const defaultToDark = userPreference !== 'light';
-        
-        setTheme(defaultToDark);
-        
-        themeToggle.addEventListener('click', () => 
-            setTheme(!document.body.classList.contains('dark-theme')));
-    } else {
-        // For pages without theme toggle button (like blog pages)
-        // Just apply the theme from localStorage
-        const userPreference = localStorage.getItem('theme');
-        const isDark = userPreference !== 'light';
-        
-        document.body.classList[isDark ? 'add' : 'remove']('dark-theme');
-        document.body.classList[!isDark ? 'add' : 'remove']('light-theme');
-        
-        // Update statusbar theme indicator if it exists
-        const statusThemeIndicator = document.querySelector('.theme-indicator');
-        if (statusThemeIndicator) {
-            const statusThemeIcon = statusThemeIndicator.querySelector('i');
-            const statusThemeText = statusThemeIndicator.querySelector('span');
-            
-            if (statusThemeIcon) {
-                statusThemeIcon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
-            }
-            
-            if (statusThemeText) {
-                statusThemeText.textContent = isDark ? 'DARK' : 'LIGHT';
-            }
-        }
-    }
+    // Always use dark theme
+    document.body.classList.remove('light-theme');
+    document.body.classList.add('dark-theme');
 
     // Mobile menu handling
     const hamburgerToggle = document.getElementById('hamburger-toggle');

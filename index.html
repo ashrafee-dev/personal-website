@@ -101,7 +101,7 @@
         }
     </style>
 </head>
-<body class="light-theme">
+<body class="dark-theme">
     <header>
         <nav>
             <!-- Logo -->
@@ -116,11 +116,6 @@
                     <i class="fas fa-book"></i>
                     <span>Blog Posts</span>
                 </a>
-                
-                <!-- Theme Toggle -->
-                <button id="theme-toggle" title="Toggle Dark/Light Mode" class="header-theme-toggle">
-                    <i class="fas fa-sun"></i>
-            </button>
                 
                 <!-- Main Navigation -->
                 <ul class="nav-menu">
@@ -381,7 +376,7 @@
         <div class="sidebar-section sidebar-tip">
             <div class="vim-command-tip">
                 <i class="fas fa-lightbulb"></i>
-                <span>Try <kbd>Shift</kbd>+<kbd>:</kbd>theme to toggle themes</span>
+                <span>Try <kbd>Shift</kbd>+<kbd>:</kbd> for commands</span>
             </div>
         </div>
         
@@ -1199,10 +1194,6 @@
                 <span class="command-desc">Open Specified Tab</span>
             </div>
             <div class="command-hint">
-                <span class="command-key">:theme</span>
-                <span class="command-desc">Toggle Theme</span>
-            </div>
-            <div class="command-hint">
                 <span class="command-key">:close</span>
                 <span class="command-desc">Close Current Tab</span>
             </div>
@@ -1339,14 +1330,6 @@
                     openModal('#modalProjects6');
                 } else if (command === 'contact' || command === ':contact') {
                     openModal('#modalContact');
-                } else if (command === 'theme' || command === ':theme') {
-                    document.body.classList.toggle('light-theme');
-                    const themeIcon = document.querySelector('#theme-toggle i');
-                    if (themeIcon.classList.contains('fa-sun')) {
-                        themeIcon.classList.replace('fa-sun', 'fa-moon');
-                    } else {
-                        themeIcon.classList.replace('fa-moon', 'fa-sun');
-                    }
                 } else if (command === 'help' || command === ':help') {
                     // Just keep command overlay visible
                     return;
