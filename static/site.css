@@ -47,4 +47,11 @@ body { padding-top: 52px; padding-bottom: 36px; }
 .comment time { color: var(--comment-color); font-size: .8rem; }
 .comment p { margin: 8px 0 0; white-space: pre-wrap; }
 .sr-only { height: 1px; margin: -1px; overflow: hidden; position: absolute; width: 1px; clip: rect(0, 0, 0, 0); }
-@media (max-width: 700px) { .blog-container { padding: 35px 24px; } .post-main { padding: 80px 10px 20px; } .blog-content { font-size: 1rem; } }
+@media (hover: none) {
+  .sidebar-toggle:hover { background-color: var(--secondary-color); box-shadow: 0 4px 12px rgba(0, 0, 0, .15); color: var(--accent-color); transform: none; }
+  .sidebar-toggle:hover i, .sidebar-toggle:hover .toggle-text { color: var(--accent-color); }
+}
+@media (max-width: 1200px) {
+  .left-sidebar { bottom: 36px; height: auto; max-height: calc(100vh - 96px); padding-bottom: 80px; }
+}
+@media (max-width: 700px) { .blogs-container { padding-top: 42px; } .blog-container { padding: 35px 24px; } .post-main { padding: 80px 10px 20px; } .blog-content { font-size: 1rem; } }
