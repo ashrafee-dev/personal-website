@@ -1,25 +1,17 @@
-# Mahdi Ashrafee — Personal Website 🌐
+# Mahdi Ashrafee Personal Website
 
-This is the source code for my personal website — a simple, animated, JavaScript-based site built to share a bit of who I am.
+This site is built with [Hugo](https://gohugo.io/).
 
----
-
-## 🚀 Features
-
-- Built with **HTML**, **CSS**, and **JavaScript**
-- Smooth animations and interactive elements
-- Fully responsive and mobile-friendly
-- Easily customizable if you want to use it yourself
-
----
-
-## 📁 Project Structure
+## Development
 
 ```bash
-.
-├── index.html
-├── style.css
-├── script.js
-└── assets/
-    └── animations/, images/, etc.
+hugo server --buildDrafts
 ```
+
+Build the production site with:
+
+```bash
+hugo --minify
+```
+
+The generated site is written to `public/`. Page content lives in `content/`, shared markup in `layouts/`, structured portfolio data in `data/`, and browser assets in `static/`.

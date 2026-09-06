@@ -1,0 +1,12 @@
+baseURL: "https://ashrafee.dev/"
+languageCode: en-us
+title: Mahdi Ashrafee
+disableKinds:
+  - taxonomy
+  - term
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+params:
+  description: Personal portfolio of Mahdi Ashrafee.

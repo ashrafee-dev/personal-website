@@ -1,0 +1,29 @@
+- name: Programming
+  items:
+    - [Python, advanced]
+    - [Java, advanced]
+    - [C/C++, advanced]
+    - [JavaScript, intermediate]
+    - [HTML/CSS, intermediate]
+    - [Bash, intermediate]
+- name: AWS Cloud
+  items:
+    - [EC2 / S3, advanced]
+    - [Route 53, advanced]
+    - [Beanstalk, intermediate]
+    - [IAM, advanced]
+    - [CloudWatch, intermediate]
+- name: Frameworks
+  items:
+    - [FastAPI, advanced]
+    - [Flask, advanced]
+    - [Django, intermediate]
+    - [SvelteKit, intermediate]
+    - [Tailwind, intermediate]
+- name: Databases
+  items:
+    - [PostgreSQL, advanced]
+    - [MySQL, intermediate]
+    - [MongoDB, intermediate]
+    - [DynamoDB, intermediate]
+    - [Redis, beginner]

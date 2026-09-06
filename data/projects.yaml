@@ -1,0 +1,20 @@
+- title: ScamShield API
+  icon: fas fa-shield-alt
+  description: Intelligent audio analysis API that detects scam tactics from phone call recordings using NLP.
+  technologies: [AWS, Python, Machine Learning]
+  url: https://github.com/ashrafee-dev/scam_shield
+- title: Algorithm Visualizer
+  icon: fas fa-stream
+  description: Interactive platform for visualizing classic algorithms with a clean, learner-focused UI.
+  technologies: [Python, Streamlit, Algorithms]
+  url: https://github.com/ashrafee-dev/algo-visualizer
+- title: Open Source Contributions
+  icon: fas fa-code-branch
+  description: Contributions to AWS CDK, AWS CDK CLI, and AWS Copilot CLI.
+  technologies: [GitHub, Go, AWS]
+  url: https://github.com/ashrafee-dev/aws-cdk/tree/fix/dotnet-10-version-check
+- title: terminAI Assistant
+  icon: fas fa-terminal
+  description: Dockerized terminal AI assistant with environment-aware configuration and cloud or local inference.
+  technologies: [Docker, Python, TensorFlow]
+  url: https://github.com/ashrafee-dev/termin-ai

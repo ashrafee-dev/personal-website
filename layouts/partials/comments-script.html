@@ -1,0 +1,52 @@
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyDcMcr0-IEnZh4IW4l7Vejcii9muAHoSrM",
+    authDomain: "comment-3aca4.firebaseapp.com",
+    projectId: "comment-3aca4",
+    storageBucket: "comment-3aca4.firebasestorage.app",
+    messagingSenderId: "516546699889",
+    appId: "1:516546699889:web:dcbaf3f4c24bb31bf1b1d0"
+  };
+
+  const form = document.getElementById("commentForm");
+  const list = document.getElementById("commentsList");
+  const count = document.getElementById("commentsCount");
+  const commentsRef = firebase.initializeApp(firebaseConfig).firestore().collection("blog-comments").doc("{{ .Params.commentId }}").collection("comments");
+
+  const renderComments = (snapshot) => {
+    count.textContent = `${snapshot.size} ${snapshot.size === 1 ? "comment" : "comments"}`;
+    list.replaceChildren();
+    if (snapshot.empty) { list.textContent = "No comments yet. Start the conversation."; return; }
+    snapshot.forEach((doc) => {
+      const comment = doc.data();
+      const item = document.createElement("article");
+      item.className = "comment";
+      const author = document.createElement("strong");
+      author.textContent = comment.name || "Anonymous";
+      const text = document.createElement("p");
+      text.textContent = comment.text || "";
+      const date = document.createElement("time");
+      const value = comment.date && comment.date.toDate ? comment.date.toDate() : null;
+      date.textContent = value ? value.toLocaleDateString() : "Just now";
+      item.append(author, date, text);
+      list.append(item);
+    });
+  };
+
+  commentsRef.orderBy("date", "desc").onSnapshot(renderComments, () => { list.textContent = "Comments are unavailable right now."; });
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const name = document.getElementById("commentName").value.trim();
+    const text = document.getElementById("commentText").value.trim();
+    if (!name || !text) return;
+    const button = form.querySelector("button");
+    button.disabled = true;
+    try {
+      await commentsRef.add({ name, text, date: firebase.firestore.FieldValue.serverTimestamp() });
+      form.reset();
+    } catch (_) { list.textContent = "Your comment could not be submitted."; }
+    button.disabled = false;
+  });
+</script>

@@ -1,0 +1,4 @@
+{{ define "main" }}
+<main class="post-main"><article class="blog-container"><header class="blog-header"><h1 class="blog-title">{{ .Title }}</h1><div class="blog-metadata"><span><i class="far fa-calendar-alt"></i> {{ .Date.Format "January 2, 2006" }}</span><span><i class="fas fa-clock"></i> {{ .Params.readTime }}</span>{{ with .Params.tags }}<span><i class="fas fa-tags"></i> {{ delimit . ", " }}</span>{{ end }}</div></header><div class="blog-content">{{ .Content }}</div>{{ if .Params.comments }}{{ partial "comments.html" . }}{{ end }}</article></main>
+{{ end }}
+{{ define "scripts" }}{{ if .Params.comments }}{{ partial "comments-script.html" . }}{{ end }}{{ end }}

@@ -1,0 +1,26 @@
+<div class="statusbar">
+  <div class="statusbar-left">
+    <div class="statusbar-mode">Active</div>
+    <div class="statusbar-item" id="fileNameDisplay">{{ .Params.fileName | default "portfolio.md" }}</div>
+    <div class="statusbar-command-container" id="statusbarCommandContainer">
+      <span class="command-prompt">:</span>
+      <input type="text" class="statusbar-command-input" id="commandInput" placeholder="Type a command" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="statusbar-item copyright">&copy; {{ now.Year }} Mahdi Ashrafee</div>
+  </div>
+  <div class="statusbar-right">
+    <div class="statusbar-item"><i class="fas fa-code-branch"></i> main</div>
+    <div class="statusbar-item"><i class="fas fa-clock"></i> <span id="current-time">00:00</span></div>
+  </div>
+</div>
+<div class="command-overlay" id="commandOverlay" aria-hidden="true">
+  <div class="command-hint-container">
+    <div class="command-hint-title">Commands</div>
+    <div class="command-hint"><span class="command-key">:home</span><span class="command-desc">Go home</span></div>
+    <div class="command-hint"><span class="command-key">:blogs</span><span class="command-desc">View posts</span></div>
+    <div class="command-hint"><span class="command-key">:resume</span><span class="command-desc">Open resume</span></div>
+    <div class="command-hint"><span class="command-key">:github</span><span class="command-desc">Open GitHub</span></div>
+    <div class="command-hint"><span class="command-key">:linkedin</span><span class="command-desc">Open LinkedIn</span></div>
+    <div class="command-hint"><span class="command-key">:help</span><span class="command-desc">Show commands</span></div>
+  </div>
+</div>

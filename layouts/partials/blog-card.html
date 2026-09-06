@@ -1,0 +1,12 @@
+{{ $post := . }}
+<a class="blog-card-wrapper" href="{{ $post.RelPermalink }}"><article class="blog-card">
+  <div class="blog-card-image" style="background: linear-gradient(135deg, {{ $post.Params.gradient }});"><i class="{{ $post.Params.icon }}"></i></div>
+  <div class="blog-card-content">
+    <div class="blog-card-meta">
+      {{ if $post.Params.comingSoon }}<span><i class="far fa-calendar"></i> Coming Soon</span><span class="coming-soon-badge">Draft</span>{{ else }}<span><i class="far fa-calendar"></i> {{ $post.Date.Format "January 2, 2006" }}</span><span><i class="far fa-clock"></i> {{ $post.Params.readTime }}</span>{{ end }}
+    </div>
+    <h2 class="blog-card-title">{{ $post.Title }}</h2>
+    <p class="blog-card-excerpt">{{ $post.Summary }}</p>
+    <div class="blog-card-tags">{{ range $post.Params.tags }}<span class="blog-tag">{{ . }}</span>{{ end }}</div>
+  </div>
+</article></a>

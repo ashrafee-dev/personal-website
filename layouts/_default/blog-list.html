@@ -1,0 +1,3 @@
+{{ define "main" }}
+<main class="blogs-main"><div class="blogs-container"><div class="blogs-header"><h1 class="blogs-title">Blog Posts</h1><p class="blogs-subtitle">Notes on software, systems, and learning.</p></div><div class="blog-grid">{{ range where site.RegularPages "Type" "blog" }}{{ partial "blog-card.html" . }}{{ end }}</div></div></main>
+{{ end }}

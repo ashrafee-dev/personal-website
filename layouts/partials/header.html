@@ -1,0 +1,16 @@
+<header class="site-header">
+  <nav>
+    <div class="logo"><a href="{{ "/" | relURL }}" class="logo-link">Mahdi Ashrafee</a></div>
+    <div class="header-icons-group">
+      {{ if .IsHome }}
+        <a href="{{ "/blogs.html" | relURL }}" class="mobile-blog-button"><i class="fas fa-book"></i><span>Blog Posts</span></a>
+      {{ else }}
+        <a href="{{ "/" | relURL }}" class="mobile-blog-button"><i class="fas fa-home"></i><span>Home</span></a>
+      {{ end }}
+      <ul class="nav-menu">
+        <li><a href="{{ "/" | relURL }}"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="{{ "/blogs.html" | relURL }}"><i class="fas fa-book"></i> Blog Posts</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>

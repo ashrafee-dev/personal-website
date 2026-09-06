@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Function to toggle mobile menu
     const toggleMobileMenu = (show) => {
+        if (!mobileMenu || !mobileOverlay) return;
         document.body.style.overflow = show ? 'hidden' : '';
         
         if (show) {
@@ -62,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
             leftSidebar.classList.toggle('active');
             
             // Show/hide scroll indicator based on sidebar visibility
-            updateScrollIndicatorVisibility();
         });
         
         // Close sidebar when clicking outside
@@ -73,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 leftSidebar.classList.remove('active');
                 
                 // Hide scroll indicator when sidebar is closed
-                updateScrollIndicatorVisibility();
             }
         });
     }
@@ -81,8 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle Escape key on blog pages to navigate back to home
     if (window.location.pathname.includes('blog-') && !document.querySelector('.modal')) {
         document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                window.location.href = 'index.html';
+            if (event.key === 'Escape' && !document.getElementById('statusbarCommandContainer')?.classList.contains('active')) {
+                window.location.href = '/';
             }
         });
     }
@@ -123,6 +122,74 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleMobileMenu(false);
         }
     });
+
+    // Neovim-style command palette
+    const commandOverlay = document.getElementById('commandOverlay');
+    const commandContainer = document.getElementById('statusbarCommandContainer');
+    const commandInput = document.getElementById('commandInput');
+    const fileNameDisplay = document.getElementById('fileNameDisplay');
+    const statusbarMode = document.querySelector('.statusbar-mode');
+
+    if (commandOverlay && commandContainer && commandInput && fileNameDisplay && statusbarMode) {
+        const closeCommandPalette = () => {
+            commandOverlay.classList.remove('visible');
+            commandOverlay.setAttribute('aria-hidden', 'true');
+            commandContainer.classList.remove('active');
+            commandInput.value = '';
+            commandInput.placeholder = 'Type a command';
+            fileNameDisplay.style.display = '';
+            statusbarMode.textContent = 'Active';
+        };
+
+        const openCommandPalette = () => {
+            commandOverlay.classList.add('visible');
+            commandOverlay.setAttribute('aria-hidden', 'false');
+            commandContainer.classList.add('active');
+            fileNameDisplay.style.display = 'none';
+            statusbarMode.textContent = 'COMMAND';
+            commandInput.focus();
+        };
+
+        const commandTargets = {
+            home: () => window.location.assign(document.querySelector('.logo-link').href),
+            blogs: () => window.location.assign(document.querySelector('a[href$="blogs.html"]').href),
+            resume: () => window.open(new URL('resume.pdf', document.baseURI), '_blank', 'noopener'),
+            github: () => window.location.assign('https://github.com/ashrafee-dev'),
+            linkedin: () => window.location.assign('https://linkedin.com/in/mahdi-ash')
+        };
+
+        document.addEventListener('keydown', e => {
+            const target = e.target;
+            if (target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement || target.isContentEditable) return;
+
+            if (e.key === ':' && e.shiftKey) {
+                e.preventDefault();
+                openCommandPalette();
+            } else if (e.key === 'Escape' && commandContainer.classList.contains('active')) {
+                closeCommandPalette();
+            }
+        });
+
+        commandInput.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                closeCommandPalette();
+                return;
+            }
+            if (e.key !== 'Enter') return;
+
+            const command = commandInput.value.trim().replace(/^:/, '').toLowerCase();
+            if (command === 'help') {
+                commandOverlay.classList.add('visible');
+                commandInput.value = '';
+            } else if (commandTargets[command]) {
+                commandTargets[command]();
+                closeCommandPalette();
+            } else {
+                commandInput.value = '';
+                commandInput.placeholder = 'Unknown command. Try :help';
+            }
+        });
+    }
 
     // Typing Animation
     const typingElement = document.querySelector('.typing-animation');

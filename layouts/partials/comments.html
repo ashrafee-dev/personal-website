@@ -1,0 +1,11 @@
+<section class="comments-section" aria-labelledby="comments-title">
+  <div class="comments-header"><h2 class="comments-title" id="comments-title">Comments</h2><span class="comments-count" id="commentsCount">0 comments</span></div>
+  <form id="commentForm" class="comment-form">
+    <label class="sr-only" for="commentName">Name</label>
+    <div class="input-container"><span class="input-prefix">user@</span><input type="text" id="commentName" placeholder="name" maxlength="80" required></div>
+    <label class="sr-only" for="commentText">Comment</label>
+    <textarea id="commentText" placeholder="// Write your comment here..." maxlength="2000" required></textarea>
+    <button type="submit" class="submit-button"><i class="fas fa-paper-plane"></i> Submit</button>
+  </form>
+  <div class="comments-list" id="commentsList" aria-live="polite"><p class="loading-comments"><i class="fas fa-spinner fa-pulse"></i> Loading comments...</p></div>
+</section>

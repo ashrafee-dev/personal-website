@@ -1,0 +1,15 @@
+{{ define "main" }}
+<div class="sidebar-toggle" id="sidebarToggle"><i class="fas fa-terminal"></i><span class="toggle-text">Skills</span></div>
+<main>
+  <section id="intro" class="section">
+    <div class="intro-container">
+      <div class="profile-header">
+        <div class="profile-section"><div class="profile-pic-box"><img src="{{ "images/profile4.jpg" | relURL }}" alt="Mahdi Ashrafee"></div><div class="name-tag">New York</div></div>
+        <div class="profile-info"><h1 class="greeting">Hi, I'm Mahdi.</h1><div class="intro-text"><p>I build reliable systems that run fast and scale smoothly. I work with <span class="keyword-text">Python</span>, <span class="keyword-text">JavaScript</span>, and <span class="keyword-text">Go</span>, with a focus on cloud technologies, backend architecture, and problem-solving through software.</p><p>When I am not coding, I am usually fixing cars, tinkering with new tools, or learning something hands-on.</p></div><div class="professional-cta"><a href="{{ "resume.pdf" | relURL }}" target="_blank" rel="noopener noreferrer" class="pro-button primary"><i class="fas fa-file-pdf"></i> View Resume</a><a href="https://github.com/ashrafee-dev" class="pro-button"><i class="fab fa-github"></i> Open GitHub</a><a href="https://linkedin.com/in/mahdi-ash" class="pro-button"><i class="fab fa-linkedin"></i> Connect on LinkedIn</a></div></div>
+      </div>
+      <section id="achievements" class="section achievements-section"><h2 class="section-title">Key Achievements</h2><div class="achievements-grid">{{ range site.Data.projects }}<article class="achievement-card"><div class="achievement-icon"><i class="{{ .icon }}"></i></div><div class="achievement-content"><h3>{{ .title }}</h3><p>{{ .description }}</p><div class="achievement-tech">{{ range .technologies }}<span class="tech-tag">{{ . }}</span>{{ end }}</div><a href="{{ .url }}" class="achievement-link"><i class="fab fa-github"></i> View on GitHub</a></div></article>{{ end }}</div></section>
+    </div>
+  </section>
+</main>
+<aside class="left-sidebar"><div class="sidebar-section"><h3>Education</h3><div class="education-brief"><div class="degree-icon"><i class="fas fa-graduation-cap"></i></div><div class="degree-info"><div class="degree-title">B.S. Computer Science</div><div class="school-name">University at Buffalo</div></div></div></div><div class="sidebar-section"><h3>Certifications</h3><div class="sidebar-cert-block"><i class="fab fa-aws"></i><span>AWS Certified Cloud Practitioner</span></div></div><h3 class="sidebar-heading">Core Technologies</h3>{{ range site.Data.skills }}<div class="tech-category"><h3>{{ .name }}</h3><div class="skill-list">{{ range .items }}<div class="skill-item"><div class="skill-name">{{ index . 0 }}</div><div class="skill-level"><div class="skill-meter {{ index . 1 }}"></div></div></div>{{ end }}</div></div>{{ end }}</aside>
+{{ end }}
