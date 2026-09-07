@@ -15,7 +15,7 @@ commentId: how-it-started
 
 <div class="story-preview">
   <div class="story-title">The Story</div>
-  <div class="story-content"><p>This is just a story about how I accidentally got into programming. No lessons, no examples, just what happened.</p></div>
+  <div class="story-content"><p>This is just a story about how I got into programming.</p></div>
 </div>
 
 You know how in some places students need expensive guidebooks to pass exams? Back in **elementary school**, most families in my **village** could not afford them. Almost everyone had a **phone**.
@@ -42,4 +42,6 @@ After months of trial and error, sleepless nights, and a progress bar that seeme
 
 <div class="timeline-marker">Late 2018</div>
 
-That is where it all began. Not with a goal of becoming a software engineer, but with a desire to **solve a problem** I saw around me. I am still learning and still building.
+I know what you’re thinking: dude, just make PDFs and send them to everyone. That’s what I remembered in the middle of all that. But hey, you gotta begin somewhere—and sometimes you just gotta find an excuse to use something you just learned.
+
+Not with a goal of becoming a software engineer, but with a desire to solve a problem I saw around me.
